@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
+
+
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +42,11 @@ class UserProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userprofile               = new UserProfile();
+        $userprofile->nacionalidad = $request->nacionalidad;
+        $userprofile->f_nacimiento = $request->f_nacimiento;
+        $userprofile->preferencias = $request->preferencias;
+        $userprofile->save();
     }
 
     /**
@@ -45,7 +57,10 @@ class UserProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $userprofile = UserProfile::find($id);
+        return $userprofile;
+        // return response()->json(userprofile());
+        // return UserProfile::find($id);
     }
 
     /**
@@ -66,9 +81,14 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $userprofile               = UserProfile::findOrfail($request->id);
+        $userprofile->nacionalidad = $request->nacionalidad;
+        $userprofile->f_nacimiento = $request->f_nacimiento;
+        $userprofile->preferencias = $request->preferencias;
+        $userprofile->save();
+        return $userprofile;
     }
 
     /**
@@ -79,6 +99,7 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $userprofile = UserProfile::destroy($id);
+        return $userprofile;
     }
 }

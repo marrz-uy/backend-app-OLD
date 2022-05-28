@@ -15,16 +15,17 @@ class CreateUserprofileTable extends Migration
     {
         Schema::create('userprofile', function (Blueprint $table) {
             $table->id();
-            $table->string('nacionalidad');
-            $table->date('f_nacimiento');
-            $table->json('preferencias');
             $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->timestamps();
+            $table->string('nacionalidad');
+            $table->date('f_nacimiento');
+            $table->json('preferencias');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 
