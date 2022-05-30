@@ -11,12 +11,13 @@ class UserProfile extends Model
     use HasFactory;
     protected $table = 'userprofile';
 
-    /* protected $fillable = [
+    protected $fillable = [
+        'user_id',
         'nacionalidad',
         'f_nacimiento',
         'preferencias',
     ];
- */
+
     // Realacion uno a uno
     public function user()
     {
@@ -24,6 +25,5 @@ class UserProfile extends Model
     }
 }
 
-// INSERT INTO `userprofile` (`id`, `user_id`, `nacionalidad`, `f_nacimiento`, `preferencias`, `created_at`, `updated_at`) VALUES (NULL, '1', 'Uruguay', '1999-05-11', '[\"Playa\", \"Hostel\", \"Dia\"]', current_timestamp(), NULL);
-// INSERT INTO `userprofile` (`id`, `user_id`, `nacionalidad`, `f_nacimiento`, `preferencias`, `created_at`, `updated_at`) VALUES (NULL, '2', 'Argentina', '1988-05-11', '[\"Playa\", \"Hostel\", \"Dia\"]', current_timestamp(), current_timestamp());
-// INSERT INTO `userprofile` VALUES (0,3, 'Brasil', '1970-09-10', '{"Tipo_Alojamiento": "Hotel", "Horarios_Evento": "Dia", "Apto_para": "Familiar", "Tipo_Lugar": "Palya"}', current_timestamp(), current_timestamp());
+
+

@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 class UserProfileController extends Controller
 {
 
-
-
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -43,6 +41,7 @@ class UserProfileController extends Controller
     public function store(Request $request)
     {
         $userprofile               = new UserProfile();
+        $userprofile->user_id      = $request->user_id;
         $userprofile->nacionalidad = $request->nacionalidad;
         $userprofile->f_nacimiento = $request->f_nacimiento;
         $userprofile->preferencias = $request->preferencias;
@@ -57,10 +56,10 @@ class UserProfileController extends Controller
      */
     public function show($id)
     {
-        $userprofile = UserProfile::find($id);
-        return response()->json($userprofile);
+        // $userprofile = UserProfile::find($id);
+        // return response()->json($userprofile);
         // return response()->json(userprofile());
-        // return response()->UserProfile::find($id);
+        return response()->json(UserProfile::find($id));
     }
 
     /**

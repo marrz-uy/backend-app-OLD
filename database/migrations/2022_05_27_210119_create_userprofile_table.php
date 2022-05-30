@@ -24,8 +24,7 @@ class CreateUserprofileTable extends Migration
             $table->string('nacionalidad');
             $table->date('f_nacimiento');
             $table->json('preferencias');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
+            $table->timestamps();
         });
     }
 

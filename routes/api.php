@@ -33,7 +33,3 @@ Route::get('/userProfile/{id}', [UserProfileController::class, 'show']);
 Route::post('/userProfile', [UserProfileController::class, 'store']);
 Route::patch('/userProfile/{id}', [UserProfileController::class, 'update']);
 Route::delete('/userProfile/{id}', [UserProfileController::class, 'destroy']);
-
-/* ELIMINAR - PRUEBA */
-// Route::get('/userProfile', [UserProfileController::class, 'show']);
-// ---------------------------------------------
