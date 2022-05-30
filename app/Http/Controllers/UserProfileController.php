@@ -58,9 +58,9 @@ class UserProfileController extends Controller
     public function show($id)
     {
         $userprofile = UserProfile::find($id);
-        return $userprofile;
+        return response()->json($userprofile);
         // return response()->json(userprofile());
-        // return UserProfile::find($id);
+        // return response()->UserProfile::find($id);
     }
 
     /**
@@ -83,7 +83,7 @@ class UserProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $userprofile               = UserProfile::findOrfail($request->id);
+        $userprofile               = UserProfile::find($request->id);
         $userprofile->nacionalidad = $request->nacionalidad;
         $userprofile->f_nacimiento = $request->f_nacimiento;
         $userprofile->preferencias = $request->preferencias;

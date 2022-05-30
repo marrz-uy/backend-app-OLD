@@ -22,12 +22,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
-
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('me', [AuthController::class, 'me']);
 
-Route::get('api/userProfile/{id}', [UserProfileController::class, 'show']);
+Route::middleware('api')->get('/userProfile', function (Request $request) {
+    return $request->userProfile();
+});
+Route::get('/userProfile/{id}', [UserProfileController::class, 'show']);
 Route::post('/userProfile', [UserProfileController::class, 'store']);
 Route::patch('/userProfile/{id}', [UserProfileController::class, 'update']);
 Route::delete('/userProfile/{id}', [UserProfileController::class, 'destroy']);
+
+/* ELIMINAR - PRUEBA */
+// Route::get('/userProfile', [UserProfileController::class, 'show']);
+// ---------------------------------------------

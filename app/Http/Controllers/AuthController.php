@@ -17,6 +17,14 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
+    /* PARA ELIMINAR - PRUEBA */
+    /* public function show()
+    {
+        $user = User::all();
+        return response()->json($user);
+        return response()->json(userprofile());
+        return UserProfile::find($id);
+    } */
 
     /**
      * Get a JWT via given credentials.
