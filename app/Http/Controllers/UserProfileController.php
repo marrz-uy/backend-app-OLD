@@ -46,6 +46,10 @@ class UserProfileController extends Controller
         $userprofile->f_nacimiento = $request->f_nacimiento;
         $userprofile->preferencias = $request->preferencias;
         $userprofile->save();
+
+        /* $userProfile = request(['user_id', 'nacionalidad', 'f_nacimiento', 'preferencias']);
+        UserProfile::create($userProfile); */
+        return response()->json('Successfully registered User profile');
     }
 
     /**
@@ -87,7 +91,11 @@ class UserProfileController extends Controller
         $userprofile->f_nacimiento = $request->f_nacimiento;
         $userprofile->preferencias = $request->preferencias;
         $userprofile->save();
-        return $userprofile;
+        // $userprofile = request(['user_id', 'nacionalidad', 'f_nacimiento', 'preferencias']);
+        return response()->json([
+            'message' => 'Successfully updated User profile',
+            'user' =>$userprofile
+        ]);
     }
 
     /**
@@ -98,7 +106,11 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        $userprofile = UserProfile::destroy($id);
-        return $userprofile;
+        $userprofile = UserProfile::find($id);
+        $eliminate = UserProfile::destroy($id);
+        return response()->json([
+            'message' => 'Successfully deleted User profile',
+            'user' =>$userprofile
+        ]);
     }
 }
