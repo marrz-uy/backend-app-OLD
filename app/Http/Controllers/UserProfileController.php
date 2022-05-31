@@ -47,9 +47,12 @@ class UserProfileController extends Controller
         $userprofile->preferencias = $request->preferencias;
         $userprofile->save();
 
-        /* $userProfile = request(['user_id', 'nacionalidad', 'f_nacimiento', 'preferencias']);
-        UserProfile::create($userProfile); */
-        return response()->json('Successfully registered User profile');
+        /* $userprofile = request(['user_id', 'nacionalidad', 'f_nacimiento', 'preferencias']);
+        UserProfile::create($userprofile); */
+        return response()->json([
+            'message' => 'Successfully registered User profile',
+            'userprofile' => $userprofile->user()
+    ]);
     }
 
     /**
@@ -106,11 +109,18 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        $userprofile = UserProfile::find($id);
-        $eliminate = UserProfile::destroy($id);
-        return response()->json([
-            'message' => 'Successfully deleted User profile',
-            'user' =>$userprofile
-        ]);
+        $userDeleted = UserProfile::find($id);
+        if ($userDeleted !== null ){
+
+            $eliminate = UserProfile::destroy($id);
+            return response()->json([
+                'message' => 'Successfully deleted User profile',
+                'user' =>$userDeleted
+            ]);
+        }else{
+            return response()->json([
+                'message' => 'The user does not exist or does not have a user profile',
+            ]);
+        }
     }
 }
