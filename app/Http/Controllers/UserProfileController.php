@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserProfile;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
@@ -47,12 +48,10 @@ class UserProfileController extends Controller
         $userprofile->preferencias = $request->preferencias;
         $userprofile->save();
 
-        /* $userprofile = request(['user_id', 'nacionalidad', 'f_nacimiento', 'preferencias']);
-        UserProfile::create($userprofile); */
         return response()->json([
             'message' => 'Successfully registered User profile',
             'userprofile' => $userprofile->user()
-    ]);
+        ]);
     }
 
     /**
@@ -63,10 +62,12 @@ class UserProfileController extends Controller
      */
     public function show($id)
     {
-        // $userprofile = UserProfile::find($id);
-        // return response()->json($userprofile);
-        // return response()->json(userprofile());
-        return response()->json(UserProfile::find($id));
+        // --Busca por id de userprofile--
+        // return response()->json(UserProfile::find($id));
+
+
+        $user = User::find($id);
+        return  response()->json($user->profile);
     }
 
     /**
