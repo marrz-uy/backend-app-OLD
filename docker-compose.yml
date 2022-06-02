@@ -9,8 +9,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-development
-    environment:
-      - var=value
     volumes:
       - ./:/app
   db:
