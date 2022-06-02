@@ -1,0 +1,28 @@
+version: '3'
+services:
+  backend:
+    container_name: backend-laravel
+    tty: true
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    build:
+      context: ./
+      dockerfile: Dockerfile-development
+    environment:
+      - var=value
+    volumes:
+      - ./:/app
+  db:
+    container_name: backend-mysql
+    image: mysql:5.7
+    tty: true
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=laravel
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+   
