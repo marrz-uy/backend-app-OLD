@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -15,8 +16,16 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
+    /* PARA ELIMINAR - PRUEBA */
+    /* public function show()
+    {
+    $user = User::all();
+    return response()->json($user);
+    return response()->json(userprofile());
+    return UserProfile::find($id);
+    } */
 
     /**
      * Get a JWT via given credentials.
@@ -27,8 +36,11 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if (!$token = auth()->attempt($credentials)) {
+
+            return response()->json([
+                'error' => 'Unauthorized',
+            ], 401);
         }
 
         return $this->respondWithToken($token);
@@ -36,11 +48,14 @@ class AuthController extends Controller
 
     public function register()
     {
-        $credentials = request(['name','email', 'password']);
-        $credentials['password'] =bcrypt($credentials['password']);
+        $credentials             = request(['name', 'email', 'password']);
+        $credentials['password'] = bcrypt($credentials['password']);
         User::create($credentials);
 
-        return response()->json('succes');;
+        return response()->json([
+            'message' => 'Successfully registered user',
+            'user'    => $credentials,
+        ]);
     }
 
     /**
@@ -62,7 +77,9 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json([
+            'message' => 'Successfully logged out',
+        ]);
     }
 
     /**
@@ -86,9 +103,9 @@ class AuthController extends Controller
     {
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()
+            'token_type'   => 'bearer',
+            'expires_in'   => auth()->factory()->getTTL() * 60,
+            'user'         => auth()->user(),
         ]);
     }
 }
