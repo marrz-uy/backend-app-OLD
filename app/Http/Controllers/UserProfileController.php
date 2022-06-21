@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserProfile;
+use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
@@ -49,8 +50,8 @@ class UserProfileController extends Controller
         $userprofile->save();
 
         return response()->json([
-            'message' => 'Successfully registered User profile',
-            'userprofile' => $userprofile->user()
+            'message'     => 'Successfully registered User profile',
+            'userprofile' => $userprofile->user(),
         ]);
     }
 
@@ -65,9 +66,8 @@ class UserProfileController extends Controller
         // --Busca por id de userprofile--
         // return response()->json(UserProfile::find($id));
 
-
         $user = User::find($id);
-        return  response()->json($user->profile);
+        return response()->json($user->profile);
     }
 
     /**
@@ -95,10 +95,10 @@ class UserProfileController extends Controller
         $userprofile->f_nacimiento = $request->f_nacimiento;
         $userprofile->preferencias = $request->preferencias;
         $userprofile->save();
-        // $userprofile = request(['user_id', 'nacionalidad', 'f_nacimiento', 'preferencias']);
+
         return response()->json([
             'message' => 'Successfully updated User profile',
-            'user' =>$userprofile
+            'user'    => $userprofile,
         ]);
     }
 
@@ -111,14 +111,14 @@ class UserProfileController extends Controller
     public function destroy($id)
     {
         $userDeleted = UserProfile::find($id);
-        if ($userDeleted !== null ){
+        if ($userDeleted !== null) {
 
             $eliminate = UserProfile::destroy($id);
             return response()->json([
                 'message' => 'Successfully deleted User profile',
-                'user' =>$userDeleted
+                'user'    => $userDeleted,
             ]);
-        }else{
+        } else {
             return response()->json([
                 'message' => 'The user does not exist or does not have a user profile',
             ]);
