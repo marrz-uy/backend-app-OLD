@@ -31,6 +31,7 @@ Route::middleware('api')->get('/userProfile', function (Request $request) {
     return $request->userProfile();
 });
 
+
 Route::get('/userProfile/{id}', [UserProfileController::class, 'show']);
 Route::post('/userProfile', [UserProfileController::class, 'store']);
 Route::patch('/userProfile/{id}', [UserProfileController::class, 'update']);
