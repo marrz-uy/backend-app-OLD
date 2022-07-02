@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Validator;
+
+// use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
     /**
      * Create a new AuthController instance.
      *
@@ -18,44 +22,52 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
-    /* PARA ELIMINAR - PRUEBA */
-    /* public function show()
-    {
-    $user = User::all();
-    return response()->json($user);
-    return response()->json(userprofile());
-    return UserProfile::find($id);
-    } */
 
     /**
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        $validator = Validator::make($request->all(), [
+            'email'    => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
 
-        if (!$token = auth()->attempt($credentials)) {
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
-            return response()->json([
-                'error' => 'Unauthorized',
-            ], 401);
+        if (!$token = auth()->attempt($validator->validated())) {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        $credentials             = request(['name', 'email', 'password']);
-        $credentials['password'] = bcrypt($credentials['password']);
-        User::create($credentials);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:2|max:100',
+            'email' => 'required|string|email|max:100|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $user = User::create([
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'name' => $request->name,
+            ]);
 
         return response()->json([
-            'message' => 'Successfully registered user',
-            'user'    => $credentials,
-        ]);
+            'message' => 'User successfully registered',
+            'user' => $user
+        ], 201);
     }
 
     /**
