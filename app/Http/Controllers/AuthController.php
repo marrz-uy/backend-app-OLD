@@ -32,8 +32,15 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email'    => 'required|email',
-            'password' => 'required|string|min:6',
-        ]);
+            'password' => 'required|string|min:8',
+        ], [
+            'email.required'    => 'El Email es obligatorio',
+            'email.unique'      => 'El Email ya existe',
+            'email.email'       => 'El Email debe tener un @',
+            'password.required' => 'La contraseña es obligatoria',
+            'password.min'      => 'La contraseña debe contener 8 caracteres minimo',
+        ]
+        );
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -49,24 +56,37 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|min:2|max:100',
-            'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
+            'email'                => 'required|string|email|max:100|unique:users',
+            'password'             => 'required|string|min:8',
+            'passwordConfirmation' => 'required|min:8|same:password',
+            'name'                 => 'required|string|min:2|max:100',
+        ], [
+            'email.required'                => 'El Email es obligatorio',
+            'email.unique'                  => 'El Email ya existe',
+            'email.email'                   => 'El Email debe tener un @',
+            'password.required'             => 'La contraseña es obligatoria',
+            'password.min'                  => 'La contraseña debe contener 8 caracteres como minimo',
+            'passwordConfirmation.required' => 'La Confirmacion de contraseña es obligatoria',
+            'passwordConfirmation.same'     => 'Las Contraseñas no coinciden',
+            'passwordConfirmation.min'      => 'La Confirmacion de contraseña debe tener 8 caracteres como minimo',
+            'name.required'                 => 'El Usuario es Obligatorio',
+            'name.min'                      => 'El Usuario debe tener 2 caracteres como minimo',
+        ]
+        );
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
         $user = User::create([
-            'email' => $request->email,
+            'email'    => $request->email,
             'password' => bcrypt($request->password),
-            'name' => $request->name,
-            ]);
+            'name'     => $request->name,
+        ]);
 
         return response()->json([
             'message' => 'User successfully registered',
-            'user' => $user
+            'user'    => $user,
         ], 201);
     }
 
@@ -118,6 +138,7 @@ class AuthController extends Controller
             'token_type'   => 'bearer',
             'expires_in'   => auth()->factory()->getTTL() * 60,
             'user'         => auth()->user(),
+            'status'       => 200,
         ]);
     }
 }
