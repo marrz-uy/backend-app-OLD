@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +16,22 @@ use App\Http\Controllers\AuthController;
 |
  */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('refresh', [AuthController::class, 'refresh']);
+Route::post('me', [AuthController::class, 'me']);
 
-Route::group(['middleware' => 'api'], function () {
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::post('me', [AuthController::class, 'me']);
+
+Route::middleware('api')->get('/userProfile', function (Request $request) {
+    return $request->userProfile();
 });
+
+Route::get('/userProfile/{id}', [UserProfileController::class, 'show']);
+Route::post('/userProfile', [UserProfileController::class, 'store']);
+Route::patch('/userProfile/{id}', [UserProfileController::class, 'update']);
+Route::delete('/userProfile/{id}', [UserProfileController::class, 'destroy']);
