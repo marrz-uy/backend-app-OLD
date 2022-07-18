@@ -51,7 +51,7 @@ class UserProfileController extends Controller
 
         return response()->json([
             'message'     => 'Successfully registered User profile',
-            'userprofile' => $userprofile->user(),
+            'userprofile' => $userprofile,
         ]);
     }
 
