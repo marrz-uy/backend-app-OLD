@@ -2,8 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class Register_test extends TestCase
@@ -16,19 +15,26 @@ class Register_test extends TestCase
     /** @test */
     public function test_Registro_con_valores_correctos()
     {
-        $response = $this->withHeaders([
-            'content-type' => 'application/json',
-        ])->post(
-            '/api/register',
-            [
-                'email' => 'martin@gmail.com',
-                'password' => '12345678',
-                'passwordConfirmation' => '12345678',
-                'name' => 'martin',
-            ]
-        );
+        $baseUrl = Config::get('app.url') . 'api/register';
 
-        $response = $this->get('/');
-        $response->assertStatus(200);
+        $email                = Config::get('api.apiEmail');
+        $password             = Config::get('api.apiPassword');
+        $passwordConfirmation = Config::get('api.apiPasswordConfirmation');
+        $name                 = Config::get('api.apiName');
+
+        $response = $this->withHeaders([
+            'Accept'       => '*/*',
+            'content-type' => 'application/json',
+        ])->postJson($baseUrl . '/', [
+            'email'                => $email,
+            'password'             => $password,
+            'passwordConfirmation' => $passwordConfirmation,
+            'name'                 => $name,
+        ]);
+        $response
+            ->assertStatus(201)
+            ->assertJson([
+                'created' => true,
+            ]);
     }
 }
