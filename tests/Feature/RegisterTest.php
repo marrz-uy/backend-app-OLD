@@ -10,24 +10,25 @@ class Register_test extends TestCase
 {
     /**
      * A basic feature test example.
-     *@test
+     *
      * @return void
      */
-    public function test_registro_con_valores_correctos()
+    /** @test */
+    public function test_Registro_con_valores_correctos()
     {
         $response = $this->withHeaders([
             'content-type' => 'application/json',
         ])->post(
             '/api/register',
             [
-                'email' => 'martin@mail.com',
+                'email' => 'martin@gmail.com',
                 'password' => '12345678',
                 'passwordConfirmation' => '12345678',
                 'name' => 'martin',
             ]
         );
 
-        $response = $this->get('/api/get');
+        $response = $this->get('/');
         $response->assertStatus(200);
     }
 }
