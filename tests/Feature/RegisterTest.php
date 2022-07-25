@@ -23,7 +23,6 @@ class Register_test extends TestCase
         $name                 = Config::get('api.apiName');
 
         $response = $this->withHeaders([
-            'Accept'       => '*/*',
             'content-type' => 'application/json',
         ])->postJson($baseUrl . '/', [
             'email'                => $email,
