@@ -61,12 +61,10 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        // --Busca por id de userprofile--
-        // return response()->json(UserProfile::find($id));
-
-        $user = User::find($id);
+        //BUSCA POR ID DE USUARIO, NO ID DE USERPROFILE
+        $user = User::find($request->id);
         return response()->json($user->profile);
     }
 
@@ -88,18 +86,26 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
-        $userprofile               = UserProfile::find($request->id);
-        $userprofile->nacionalidad = $request->nacionalidad;
-        $userprofile->f_nacimiento = $request->f_nacimiento;
-        $userprofile->preferencias = $request->preferencias;
-        $userprofile->save();
+        $userprofile   = UserProfile::where('user_id', $id)->first();
 
-        return response()->json([
-            'message' => 'Successfully updated User profile',
-            'user'    => $userprofile,
-        ]);
+        if($userprofile !== null){
+
+            $userprofile->nacionalidad = $request->nacionalidad;
+            $userprofile->f_nacimiento = $request->f_nacimiento;
+            $userprofile->preferencias = $request->preferencias;
+            $userprofile->save();
+
+            return response()->json([
+                'message' => 'Successfully updated User profile',
+                'user'    => $userprofile,
+            ]);
+        }else{
+            return response()->json([
+                'message' => 'NO EXISTE PERFIL PARA EL USUARIO',
+            ]);
+        }
     }
 
     /**
