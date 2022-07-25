@@ -12,7 +12,6 @@ class UserProfile extends Model
     protected $table = 'userprofile';
 
     protected $fillable = [
-        'user_id',
         'nacionalidad',
         'f_nacimiento',
         'preferencias',
