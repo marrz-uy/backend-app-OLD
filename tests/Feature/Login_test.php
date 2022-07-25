@@ -21,7 +21,7 @@ class LoginTest extends TestCase
             ]
         );
 
-        $response = $this->get('/api/login');
+        $response = $this->get('/');
         $response->assertStatus(200);
     }
 }
