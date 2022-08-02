@@ -5,14 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
-class Register_test extends TestCase
+class RegisterTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    /** @test */
     public function test_Registro_con_valores_correctos()
     {
         $baseUrl = Config::get('app.url') . 'api/register';
@@ -25,15 +19,11 @@ class Register_test extends TestCase
         $response = $this->withHeaders([
             'content-type' => 'application/json',
         ])->postJson($baseUrl . '/', [
-            'email'                => $email,
-            'password'             => $password,
-            'passwordConfirmation' => $passwordConfirmation,
-            'name'                 => $name,
+            'email'                => 'martin@gmail.com',
+            'password'             => '12345678',
+            'passwordConfirmation' => '12345678',
+            'name'                 => 'martin',
         ]);
-        $response
-            ->assertStatus(201)
-            ->assertJson([
-                'created' => true,
-            ]);
+        $response = $this->get('/')->assertStatus(201);
     }
 }

@@ -7,8 +7,7 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-
-    public function testLogin()
+    public function test_Login_con_valores_correctos()
     {
         $baseUrl = Config::get('app.url') . '/api/login';
 
@@ -16,14 +15,12 @@ class LoginTest extends TestCase
         $password = Config::get('api.apiPassword');
 
         $response = $this->withHeaders([
-
             'Content-type' => 'application/json',
         ])->postJson($baseUrl . '/', [
             'email'    => $email,
             'password' => $password,
         ]);
 
-        $response = $this->get('/');
-        $response->assertStatus(200);
+        $response = $this->get('/')->assertStatus(200);
     }
 }
