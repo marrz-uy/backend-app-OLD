@@ -116,7 +116,7 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        $userDeleted = UserProfile::find($id);
+        $userDeleted = UserProfile::where('user_id', $id)->first();
         if ($userDeleted !== null) {
 
             $eliminate = UserProfile::destroy($id);
