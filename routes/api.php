@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\TranslationsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,6 @@ Route::get('/userProfile/{id}', [UserProfileController::class, 'show']);
 Route::post('/userProfile', [UserProfileController::class, 'store']);
 Route::patch('/userProfile/{id}', [UserProfileController::class, 'update']);
 Route::delete('/userProfile/{id}', [UserProfileController::class, 'destroy']);
+
+
+Route::get('/translations', [TranslationsController::class, 'fetchdata']);
