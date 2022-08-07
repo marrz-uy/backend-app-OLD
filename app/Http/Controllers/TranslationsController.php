@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Translations;
+use Illuminate\Http\Request;
 
 class TranslationsController extends Controller
 {
@@ -33,9 +33,19 @@ class TranslationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function saveTranslations(Request $request)
     {
-        //
+
+        $translations = Translations::create();
+        $translations -> translations = $request->datos;
+        $translations->save();
+
+       
+
+        return response()->json([
+            'message' => 'translations successfully registered',
+            'datos'   => $translations,
+        ], 201);
     }
 
     /**
@@ -44,10 +54,10 @@ class TranslationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function fetchdata()
+    public function fetchTranslations()
     {
-        $translations['translations']=Translations::all();
-        return response()->json($translations);
+        $translations = Translations::All('datos');
+        return response()->json(['datos' => $translations]);
     }
 
     /**

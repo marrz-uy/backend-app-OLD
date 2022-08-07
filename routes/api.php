@@ -37,5 +37,8 @@ Route::post('/userProfile', [UserProfileController::class, 'store']);
 Route::patch('/userProfile/{id}', [UserProfileController::class, 'update']);
 Route::delete('/userProfile/{id}', [UserProfileController::class, 'destroy']);
 
-
-Route::get('/translations', [TranslationsController::class, 'fetchdata']);
+Route::middleware('api')->get('/translations', function (Request $request) {
+    return $request->translations();
+});
+Route::get('/translations', [TranslationsController::class, 'fetchTranslations']);
+Route::post('/translations', [TranslationsController::class, 'saveTranslations']);
