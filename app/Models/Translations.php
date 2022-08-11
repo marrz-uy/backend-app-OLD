@@ -12,6 +12,8 @@ class Translations extends Model
     protected $table = 'translations';
 
     protected $fillable = [
-        'translations'
+        'tagName',
+        'es',
+        'en',
     ];
 }

@@ -36,11 +36,11 @@ class TranslationsController extends Controller
     public function saveTranslations(Request $request)
     {
 
-        $translations = Translations::create();
-        $translations -> translations = $request->datos;
+        $translations       = Translations::create();
+        $translations->tagName = $request->tagName;
+        $translations->es   = $request->es;
+        $translations->en   = $request->en;
         $translations->save();
-
-       
 
         return response()->json([
             'message' => 'translations successfully registered',
@@ -56,8 +56,8 @@ class TranslationsController extends Controller
      */
     public function fetchTranslations()
     {
-        $translations = Translations::All('datos');
-        return response()->json(['datos' => $translations]);
+        $translations = Translations::All('tagName','es', 'en');
+        return response()->json($translations);
     }
 
     /**
