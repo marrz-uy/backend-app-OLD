@@ -63,7 +63,7 @@ class UserProfileController extends Controller
      */
     public function show(Request $request)
     {
-        //BUSCA POR ID DE USUARIO, NO ID DE USERPROFILE
+        //BUSCA POR ID DE USUARIO, NO POR EL ID DE USERPROFILE
         $user = User::find($request->id);
         return response()->json($user->profile);
     }
