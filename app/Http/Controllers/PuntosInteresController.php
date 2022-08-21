@@ -71,17 +71,6 @@ class PuntosInteresController extends Controller
 
     }
 
-    private function buscarServicioEscencial($Tipo){
-            $categoria = 'servicios_esenciales';
-            $puntosInteres = DB::table('puntosinteres')
-                ->Join($categoria, 'puntosinteres.id', '=', 'puntosinteres_id')
-                ->where($categoria . '.tipo', '=', $Tipo)
-                ->paginate(10);
-
-            return response()->json($puntosInteres);
-
-    }
-
     public function update(Request $request, $IdPuntoDeInteres)
     {
         $p               = PuntosInteres::find($IdPuntoDeInteres);
