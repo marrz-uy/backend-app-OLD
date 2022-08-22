@@ -6,19 +6,21 @@ use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
+    // use RefreshDatabase;
+
     public function test_Registro_con_valores_correctos()
     {
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
         ])->postJson('/api/register', [
-            'email'                => 'martin@gmail.com',
+            'email'                => 'pedrito@gmail.com',
             'password'             => '12345678',
             'passwordConfirmation' => '12345678',
-            'name'                 => 'martin',
+            'name'                 => 'pedrito',
         ]);
-        // $response = $this->get('/');
-        $response->assertStatus(200);
+
+        $response->assertStatus(201);
     }
 
     public function test_Registro_con_valores_incorrectos()

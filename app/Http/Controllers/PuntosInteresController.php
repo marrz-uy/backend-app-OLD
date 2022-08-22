@@ -66,8 +66,8 @@ class PuntosInteresController extends Controller
     public function ListarPuntosDeInteres(Request $request, $Nombre)
     {
 
-        $puntos = DB::table('puntosinteres') -> where('nombre', 'like', '%' . $Nombre . '%')->paginate(10);
-        return response() ->json($puntos);
+        $puntos = DB::table('puntosinteres')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(10);
+        return response()->json($puntos);
 
     }
 

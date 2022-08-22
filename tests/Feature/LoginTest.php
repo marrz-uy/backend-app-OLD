@@ -9,9 +9,18 @@ class LoginTest extends TestCase
     public function test_Login_con_valores_correctos()
     {
         $response = $this->withHeaders([
+            'content-type' => 'application/json',
+        ])->postJson('/api/register', [
+            'email'                => 'juancito@gmail.com',
+            'password'             => '12345678',
+            'passwordConfirmation' => '12345678',
+            'name'                 => 'juancito',
+        ]);
+
+        $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
-            'email'    => 'martin@gmail.com',
+            'email'    => 'juancito@gmail.com',
             'password' => '12345678',
         ]);
 
