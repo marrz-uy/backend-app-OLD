@@ -31,16 +31,16 @@ Route::POST('me', [AuthController::class, 'me']);
 Route::middleware('api')->get('/userProfile', function (Request $request) {
     return $request->userProfile();
 });
-Route::get('/userProfile/{id}', [UserProfileController::class, 'show']);
-Route::post('/userProfile', [UserProfileController::class, 'store']);
-Route::patch('/userProfile/{id}', [UserProfileController::class, 'update']);
-Route::delete('/userProfile/{id}', [UserProfileController::class, 'destroy']);
+Route::GET('/userProfile/{id}', [UserProfileController::class, 'show']);
+Route::POST('/userProfile', [UserProfileController::class, 'store']);
+Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'update']);
+Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'destroy']);
 
-Route::get('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteres']);
-Route::post('/PuntosInteres', [PuntosInteresController::class, 'store']);
+Route::GET('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteres']);
+Route::POST('/PuntosInteres', [PuntosInteresController::class, 'store']);
 
 Route::middleware('api')->get('/translations', function (Request $request) {
     return $request->translations();
 });
-Route::get('/translations', [TranslationsController::class, 'fetchTranslations']);
-Route::post('/translations', [TranslationsController::class, 'saveTranslations']);
+Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
+Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);

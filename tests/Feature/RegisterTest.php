@@ -6,7 +6,6 @@ use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
-    // use RefreshDatabase;
 
     public function test_Registro_con_valores_correctos()
     {

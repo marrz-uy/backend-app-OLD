@@ -8,6 +8,7 @@ class LoginTest extends TestCase
 {
     public function test_Login_con_valores_correctos()
     {
+        // Insert de un usuario para testear login
         $response = $this->withHeaders([
             'content-type' => 'application/json',
         ])->postJson('/api/register', [
@@ -25,7 +26,9 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertStatus(200);
-
+        $response->assertJsonStructure(["access_token"]);
+        $response->assertJsonStructure(["token_type"]);
+        $response->assertJsonStructure(["expires_in"]);
     }
 
     public function test_Login_con_usuario_que_no_existe()
@@ -38,7 +41,6 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertStatus(401);
-
     }
 
     public function test_Login_con_password_corto()
