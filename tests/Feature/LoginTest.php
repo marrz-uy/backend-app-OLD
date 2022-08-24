@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
@@ -9,20 +10,26 @@ class LoginTest extends TestCase
     public function test_Login_con_valores_correctos()
     {
         // Insert de un usuario para testear login
+
+        $email                = Config::get('api.apiEmail1');
+        $password             = Config::get('api.apiPassword1');
+        $passwordConfirmation = Config::get('api.apiPasswordConfirmation1');
+        $name                 = Config::get('api.apiName1');
+
         $response = $this->withHeaders([
             'content-type' => 'application/json',
         ])->postJson('/api/register', [
-            'email'                => 'juancito@gmail.com',
-            'password'             => '12345678',
-            'passwordConfirmation' => '12345678',
-            'name'                 => 'juancito',
+            'email'                => $email,
+            'password'             => $password,
+            'passwordConfirmation' => $passwordConfirmation,
+            'name'                 => $name,
         ]);
 
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
-            'email'    => 'juancito@gmail.com',
-            'password' => '12345678',
+            'email'    => $email,
+            'password' => $password,
         ]);
 
         $response->assertStatus(200);
@@ -45,10 +52,12 @@ class LoginTest extends TestCase
 
     public function test_Login_con_password_corto()
     {
+        $email    = Config::get('api.apiEmail1');
+
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
-            'email'    => 'martin@gmail.com',
+            'email'    => $email,
             'password' => '123456',
         ]);
 

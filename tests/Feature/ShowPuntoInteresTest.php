@@ -4,15 +4,15 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class ListarPuntoInteresTest extends TestCase
+class ShowPuntoInteresTest extends TestCase
 {
-    public function test_getAll()
+    public function test_ObtenerPuntosInteres()
     {
         $response = $this->get('/api/PuntosInteres/farmacia');
         $response->assertStatus(200);
     }
 
-    public function test_Pagination()
+    public function test_Paginacion()
     {
         $response = $this->get('/api/PuntosInteres/farmacia');
         $response->assertJsonCount(10, "data");

@@ -25,8 +25,6 @@ Route::POST('login', [AuthController::class, 'login']);
 Route::POST('register', [AuthController::class, 'register']);
 Route::POST('logout', [AuthController::class, 'logout']);
 Route::POST('refresh', [AuthController::class, 'refresh']);
-Route::POST('me', [AuthController::class, 'me']);
-
 
 Route::middleware('api')->get('/userProfile', function (Request $request) {
     return $request->userProfile();
