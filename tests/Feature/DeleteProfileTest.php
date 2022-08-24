@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -12,10 +11,10 @@ class DeleteProfileTest extends TestCase
     public function test_Eliminar_Perfil_Correctos()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-        $email                = Config::get('api.apiEmail3');
-        $password             = Config::get('api.apiPassword3');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation3');
-        $name                 = Config::get('api.apiName3');
+        $email                = getenv('API_USER_EMAIL3');
+        $password             = getenv('API_USER_PASSWORD3');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION3');
+        $name                 = getenv('API_USER_NAME3');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -60,10 +59,10 @@ class DeleteProfileTest extends TestCase
     public function test_Eliminar_Perfil_Incorrecto()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-        $email                = Config::get('api.apiEmail4');
-        $password             = Config::get('api.apiPassword4');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation4');
-        $name                 = Config::get('api.apiName4');
+        $email                = getenv('API_USER_EMAIL4');
+        $password             = getenv('API_USER_PASSWORD4');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION4');
+        $name                 = getenv('API_USER_NAME4');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -108,6 +107,6 @@ class DeleteProfileTest extends TestCase
             'message' => "The user does not exist or does not have a user profile",
         ]);
         
-        // asegurarme de que se borro
+        //! asegurarme de que se borro
     }
 }

@@ -5,17 +5,16 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Config;
 
 class ShowProfileTest extends TestCase
 {
     public function test_Ver_Pefil_Correcto()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-        $email                = Config::get('api.apiEmail3');
-        $password             = Config::get('api.apiPassword3');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation3');
-        $name                 = Config::get('api.apiName3');
+        $email                = getenv('API_USER_EMAIL3');
+        $password             = getenv('API_USER_PASSWORD3');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION3');
+        $name                 = getenv('API_USER_NAME3');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -61,10 +60,10 @@ class ShowProfileTest extends TestCase
     public function test_Ver_Pefil_Incorrecto_error_en_endpoint()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-        $email                = Config::get('api.apiEmail3');
-        $password             = Config::get('api.apiPassword3');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation3');
-        $name                 = Config::get('api.apiName3');
+        $email                = getenv('API_USER_EMAIL3');
+        $password             = getenv('API_USER_PASSWORD3');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION3');
+        $name                 = getenv('API_USER_NAME3');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',

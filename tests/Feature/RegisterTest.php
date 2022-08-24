@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -11,10 +10,10 @@ class RegisterTest extends TestCase
     public function test_Registro_con_valores_correctos()
     {
 
-        $email                = Config::get('api.apiEmail2');
-        $password             = Config::get('api.apiPassword2');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation2');
-        $name                 = Config::get('api.apiName2');
+        $email                = getenv('API_USER_EMAIL2');
+        $password             = getenv('API_USER_PASSWORD2');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION2');
+        $name                 = getenv('API_USER_NAME2');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -26,6 +25,8 @@ class RegisterTest extends TestCase
         ]);
 
         $response->assertStatus(201);
+
+        //!buscar insertado
     }
 
     public function test_Registro_con_valores_incorrectos()
@@ -42,6 +43,5 @@ class RegisterTest extends TestCase
 
         $response->assertStatus(400);
     }
-    
 
 }

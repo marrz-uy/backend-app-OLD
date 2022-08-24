@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -12,8 +11,7 @@ class UpdatePerfilTest extends TestCase
 
     public function test_Actualizar_Perfil_con_valores_correctos()
     {
-
-        $email = Config::get('api.apiEmail1');
+        $email = getenv('API_USER_EMAIL1');
 
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);
@@ -28,13 +26,14 @@ class UpdatePerfilTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+        // $response-> asertnotequal
 
     }
 
     public function test_Actualizar_Perfil_Incorrecto__error_formato_de_fecha()
     {
 
-        $email = Config::get('api.apiEmail1');
+        $email = getenv('API_USER_EMAIL1');
 
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);

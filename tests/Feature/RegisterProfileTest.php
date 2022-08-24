@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -12,10 +11,10 @@ class RegisterProfileTest extends TestCase
     public function test_Registro_Perfil_con_valores_correctos()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-        $email                = Config::get('api.apiEmail1');
-        $password             = Config::get('api.apiPassword1');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation1');
-        $name                 = Config::get('api.apiName1');
+        $email                = getenv('API_USER_EMAIL1');
+        $password             = getenv('API_USER_PASSWORD1');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION1');
+        $name                 = getenv('API_USER_NAME1');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -52,19 +51,16 @@ class RegisterProfileTest extends TestCase
 
         $response->assertStatus(200);
 
-        //ver insertado
+        //!ver insertado
     }
 
     public function test_Registro_Perfil_con_valores_Incorrecto_error_formato_de_fecha()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-
-        //getenv => var en .env
-
-        $email                = Config::get('api.apiEmail4');
-        $password             = Config::get('api.apiPassword4');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation4');
-        $name                 = Config::get('api.apiName4');
+        $email                = getenv('API_USER_EMAIL4');
+        $password             = getenv('API_USER_PASSWORD4');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION4');
+        $name                 = getenv('API_USER_NAME4');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',

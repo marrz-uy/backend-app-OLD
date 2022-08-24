@@ -10,11 +10,10 @@ class LoginTest extends TestCase
     public function test_Login_con_valores_correctos()
     {
         // Insert de un usuario para testear login
-
-        $email                = Config::get('api.apiEmail1');
-        $password             = Config::get('api.apiPassword1');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation1');
-        $name                 = Config::get('api.apiName1');
+        $email                = getenv('API_USER_EMAIL1');
+        $password             = getenv('API_USER_PASSWORD1');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION1');
+        $name                 = getenv('API_USER_NAME1');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',

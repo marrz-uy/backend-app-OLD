@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -12,19 +11,19 @@ class LogoutTest extends TestCase
     public function test_Logout_Correcto()
     {
 
-        $email                = Config::get('api.apiEmail1');
-        $password             = Config::get('api.apiPassword1');
+        $email    = getenv('API_USER_EMAIL1');
+        $password = getenv('API_USER_PASSWORD1');
 
         //Se hace Login con usuario para generar el JWToken
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
-            'email'                => $email,
-            'password'             => $password,
+            'email'    => $email,
+            'password' => $password,
         ]);
 
         //Se recupera el usuario y su JWToken
-        $user  = User::where('email', Config::get('api.apiEmail1'))->first();
+        $user  = User::where('email', getenv('API_USER_EMAIL1'))->first();
         $token = JWTAuth::fromUser($user);
 
         $response = $this->withHeaders([
