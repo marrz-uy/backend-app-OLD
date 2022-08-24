@@ -66,19 +66,8 @@ class PuntosInteresController extends Controller
     public function ListarPuntosDeInteres(Request $request, $Nombre)
     {
 
-        $puntos = DB::table('puntosinteres') -> where('nombre', 'like', '%' . $Nombre . '%')->paginate(10);
-        return response() ->json($puntos);
-
-    }
-
-    private function buscarServicioEscencial($Tipo){
-            $categoria = 'servicios_esenciales';
-            $puntosInteres = DB::table('puntosinteres')
-                ->Join($categoria, 'puntosinteres.id', '=', 'puntosinteres_id')
-                ->where($categoria . '.tipo', '=', $Tipo)
-                ->paginate(10);
-
-            return response()->json($puntosInteres);
+        $puntos = DB::table('puntosinteres')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(10);
+        return response()->json($puntos);
 
     }
 
