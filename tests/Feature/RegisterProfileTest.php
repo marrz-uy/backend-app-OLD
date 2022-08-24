@@ -51,11 +51,16 @@ class RegisterProfileTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+
+        //ver insertado
     }
 
     public function test_Registro_Perfil_con_valores_Incorrecto_error_formato_de_fecha()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
+
+        //getenv => var en .env
+
         $email                = Config::get('api.apiEmail4');
         $password             = Config::get('api.apiPassword4');
         $passwordConfirmation = Config::get('api.apiPasswordConfirmation4');
