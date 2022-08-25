@@ -10,7 +10,7 @@ class ShowProfileTest extends TestCase
 {
     public function test_Ver_Pefil_Correcto()
     {
-        // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
+        //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL3');
         $password             = getenv('API_USER_PASSWORD3');
         $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION3');
@@ -25,7 +25,7 @@ class ShowProfileTest extends TestCase
             'name'                 => $name,
         ]);
 
-        //Se hace Login con usuario para generar el JWToken
+        //? Se hace Login con usuario para generar el JWToken
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
@@ -36,7 +36,7 @@ class ShowProfileTest extends TestCase
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);
 
-        //Creo Perfil
+        //? Creo Perfil
         $response = $this->withHeaders([
             'content-type'  => 'application/json',
             'Authorization' => 'Bearer' . $token,
@@ -47,7 +47,7 @@ class ShowProfileTest extends TestCase
             'preferencias' => 'idgdfgdfgdfgdgdgdfgdfgdgdfgdgdf',
         ]);
 
-
+        //? VER Perfil
         $response = $this->withHeaders([
             'content-type'  => 'application/json',
             'Authorization' => 'Bearer' . $token,
@@ -59,7 +59,7 @@ class ShowProfileTest extends TestCase
 
     public function test_Ver_Pefil_Incorrecto_error_en_endpoint()
     {
-        // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
+        //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL3');
         $password             = getenv('API_USER_PASSWORD3');
         $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION3');
@@ -74,7 +74,7 @@ class ShowProfileTest extends TestCase
             'name'                 => $name,
         ]);
 
-        //Se hace Login con usuario para generar el JWToken
+        //? Se hace Login con usuario para generar el JWToken
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
@@ -85,7 +85,7 @@ class ShowProfileTest extends TestCase
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);
 
-        //Creo Perfil
+        //? Creo Perfil
         $response = $this->withHeaders([
             'content-type'  => 'application/json',
             'Authorization' => 'Bearer' . $token,
