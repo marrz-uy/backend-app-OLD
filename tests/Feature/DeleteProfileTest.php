@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class DeleteProfileTest extends TestCase
 {
-    public function test_Eliminar_Perfil____operacion_Exitosa()
+    public function test_Eliminar_perfil____Operacion_exitosa()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL3');
@@ -57,7 +57,7 @@ class DeleteProfileTest extends TestCase
     }
 
     //! asegurarme de que se borro
-    public function test_Eliminar_Perfil____confirmar_Eliminacion()
+    public function test_Eliminar_perfil____Confirmar_Eliminacion()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL3');
@@ -95,7 +95,7 @@ class DeleteProfileTest extends TestCase
         $response->assertStatus(404);
     }
 
-    public function test_Eliminar_Perfil____operacion_Fallida()
+    public function test_Eliminar_perfil____Operacion_fallida()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL4');
@@ -133,8 +133,6 @@ class DeleteProfileTest extends TestCase
             'f_nacimiento' => '2020-08-23',
             'preferencias' => 'idgdfgdfgdfgdgdgdfgdfgdgdfgdgdf',
         ]);
-
-        //Elimino perfil
 
         $response = $this->withHeaders([
             'content-type'  => 'application/json',

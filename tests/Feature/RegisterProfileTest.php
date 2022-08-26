@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class RegisterProfileTest extends TestCase
 {
-    public function test_Registro_Perfil_con_valores_correctos()
+    public function test_Registro_Perfil___Operacion_Exitosa()
     {
         //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL1');
@@ -51,7 +51,7 @@ class RegisterProfileTest extends TestCase
     }
 
     //!ver insertado
-    public function test_Chequear_Que_Perfil_fue_agregado()
+    public function test_Registro_Perfil___Confirmar_Que_se_agrego()
     {
         //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL1');
@@ -99,7 +99,7 @@ class RegisterProfileTest extends TestCase
 
     }
 
-    public function test_Registro_Perfil_con_valores_Incorrecto_error_formato_de_fecha()
+    public function test_Registro_Perfil___Operacion_Fallida()
     {
         //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL4');

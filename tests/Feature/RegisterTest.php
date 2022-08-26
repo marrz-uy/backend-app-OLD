@@ -7,7 +7,7 @@ use Tests\TestCase;
 class RegisterTest extends TestCase
 {
 
-    public function test_Registro_con_valores_correctos()
+    public function test_Registrar_usuario___Operacion_Exitosa()
     {
 
         $email                = getenv('API_USER_EMAIL2');
@@ -26,12 +26,26 @@ class RegisterTest extends TestCase
 
         $response->assertStatus(201);
 
-        //!buscar insertado
     }
 
-    public function test_Registro_con_valores_incorrectos()
+    public function test_Registrar_usuario___Confirmar_creacion___usuario_se_loguea()
     {
 
+        $email    = getenv('API_USER_EMAIL2');
+        $password = getenv('API_USER_PASSWORD2');
+
+        $response = $this->withHeaders([
+            'Content-type' => 'application/json',
+        ])->postJson('/api/login', [
+            'email'    => $email,
+            'password' => $password,
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_Registrar_usuario___Operacion_fallida___error_en_correo()
+    {
         $response = $this->withHeaders([
             'content-type' => 'application/json',
         ])->postJson('/api/register', [

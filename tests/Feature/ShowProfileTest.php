@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ShowProfileTest extends TestCase
 {
-    public function test_Ver_Pefil_Correcto()
+    public function test_Ver_pefil___Operacion_exitosa()
     {
         //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL3');
@@ -57,7 +57,7 @@ class ShowProfileTest extends TestCase
 
     }
 
-    public function test_Ver_Pefil_Incorrecto_error_en_endpoint()
+    public function test_Ver_pefil___Operacion_fallida___error_en_endpoint()
     {
         //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
         $email                = getenv('API_USER_EMAIL3');

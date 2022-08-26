@@ -9,10 +9,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class UpdatePerfilTest extends TestCase
 {
 
-    public function test_Actualizar_Perfil_con_valores_correctos()
+    public function test_Actualizar_perfil___Operacion_exitosa()
     {
-        $email = getenv('API_USER_EMAIL1');
-
+        $email = getenv('API_USER_EMAIL4');
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);
 
@@ -26,11 +25,30 @@ class UpdatePerfilTest extends TestCase
         ]);
 
         $response->assertStatus(200);
-        // $response-> asertnotequal
+    }
+
+    public function test_Actualizar_perfil___Confirmar_actualizacion()
+    {
+        $email = getenv('API_USER_EMAIL4');
+        $user  = User::where('email', $email)->first();
+        $token = JWTAuth::fromUser($user);
+
+        $response = $this->withHeaders([
+            'content-type'  => 'application/json',
+            'Authorization' => 'Bearer' . $token,
+        ])->getJson('api/userProfile/' . $user->id);
+
+        $expected = "Paraguayo";
+        $actual   = $user->profile->nacionalidad;
+
+        $this->assertEquals(
+            $expected,
+            $actual,
+        );
 
     }
 
-    public function test_Actualizar_Perfil_Incorrecto__error_formato_de_fecha()
+    public function test_Actualizar_perfil___Operacion_fallida___error_formato_de_fecha()
     {
 
         $email = getenv('API_USER_EMAIL1');

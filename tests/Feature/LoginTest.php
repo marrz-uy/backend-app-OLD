@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    public function test_Login_con_valores_correctos()
+    public function test_Login___Operacion_exitosa()
     {
         // Insert de un usuario para testear login
         $email                = getenv('API_USER_EMAIL1');
@@ -37,7 +37,7 @@ class LoginTest extends TestCase
         $response->assertJsonStructure(["expires_in"]);
     }
 
-    public function test_Login_con_usuario_que_no_existe()
+    public function test_Login___Operacion_fallida___usuario_que_no_existe()
     {
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
@@ -49,7 +49,7 @@ class LoginTest extends TestCase
         $response->assertStatus(401);
     }
 
-    public function test_Login_con_password_corto()
+    public function test_Login___Operacion_fallida___password_corto()
     {
         $email    = Config::get('api.apiEmail1');
 

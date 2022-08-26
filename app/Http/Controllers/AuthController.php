@@ -85,10 +85,9 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Successfully logged out',
-        ]);
-
-        
+        ]); 
     }
+
 
     public function refresh()
     {
@@ -106,4 +105,5 @@ class AuthController extends Controller
             'userProfile'  => auth()->user()->profile,
         ]);
     }
+
 }
