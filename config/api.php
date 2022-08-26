@@ -9,7 +9,7 @@ return [
      */
     // Default API user - mostly used for tests.
     
-    // USER 1
+    /* // USER 1
     'apiEmail1'                => env('API_USER_EMAIL1'),
     'apiPassword1'             => env('API_USER_PASSWORD1'),
     'apiPasswordConfirmation1' => env('API_USER_PASSWORDCONFIRMATION1'),
@@ -29,5 +29,5 @@ return [
     'apiPassword4'             => env('API_USER_PASSWORD4'),
     'apiPasswordConfirmation4' => env('API_USER_PASSWORDCONFIRMATION4'),
     'apiName4'                 => env('API_USER_NAME4'),
-
+ */
 ];

@@ -5,17 +5,16 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Config;
 
 class ShowProfileTest extends TestCase
 {
-    public function test_Ver_Pefil_Correcto()
+    public function test_Ver_pefil___Operacion_exitosa()
     {
-        // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-        $email                = Config::get('api.apiEmail3');
-        $password             = Config::get('api.apiPassword3');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation3');
-        $name                 = Config::get('api.apiName3');
+        //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
+        $email                = getenv('API_USER_EMAIL3');
+        $password             = getenv('API_USER_PASSWORD3');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION3');
+        $name                 = getenv('API_USER_NAME3');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -26,7 +25,7 @@ class ShowProfileTest extends TestCase
             'name'                 => $name,
         ]);
 
-        //Se hace Login con usuario para generar el JWToken
+        //? Se hace Login con usuario para generar el JWToken
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
@@ -37,7 +36,7 @@ class ShowProfileTest extends TestCase
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);
 
-        //Creo Perfil
+        //? Creo Perfil
         $response = $this->withHeaders([
             'content-type'  => 'application/json',
             'Authorization' => 'Bearer' . $token,
@@ -48,7 +47,7 @@ class ShowProfileTest extends TestCase
             'preferencias' => 'idgdfgdfgdfgdgdgdfgdfgdgdfgdgdf',
         ]);
 
-
+        //? VER Perfil
         $response = $this->withHeaders([
             'content-type'  => 'application/json',
             'Authorization' => 'Bearer' . $token,
@@ -58,13 +57,13 @@ class ShowProfileTest extends TestCase
 
     }
 
-    public function test_Ver_Pefil_Incorrecto_error_en_endpoint()
+    public function test_Ver_pefil___Operacion_fallida___error_en_endpoint()
     {
-        // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
-        $email                = Config::get('api.apiEmail3');
-        $password             = Config::get('api.apiPassword3');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation3');
-        $name                 = Config::get('api.apiName3');
+        //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
+        $email                = getenv('API_USER_EMAIL3');
+        $password             = getenv('API_USER_PASSWORD3');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION3');
+        $name                 = getenv('API_USER_NAME3');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -75,7 +74,7 @@ class ShowProfileTest extends TestCase
             'name'                 => $name,
         ]);
 
-        //Se hace Login con usuario para generar el JWToken
+        //? Se hace Login con usuario para generar el JWToken
         $response = $this->withHeaders([
             'Content-type' => 'application/json',
         ])->postJson('/api/login', [
@@ -86,7 +85,7 @@ class ShowProfileTest extends TestCase
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);
 
-        //Creo Perfil
+        //? Creo Perfil
         $response = $this->withHeaders([
             'content-type'  => 'application/json',
             'Authorization' => 'Bearer' . $token,

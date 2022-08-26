@@ -13,9 +13,9 @@ class PuntoDeInteresSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($c = 0; $c < 50; $c++) {
+        for ($c = 0; $c < 100; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Farmacia xxx'. Str::random(10),
+                'Nombre'       => $faker->randomElement($array = array('Hospital ', 'Farmacia ', 'Cerrajeria ', 'Estacion ', 'Seccional ')) . Str::random(10),
                 'Departamento' => $faker->state,
                 'Ciudad'       => $faker->city,
                 'Direccion'    => $faker->address,
@@ -24,10 +24,34 @@ class PuntoDeInteresSeeder extends Seeder
             ]);
         }
 
-        foreach (range(1, 50) as $index) {
+        foreach (range(1, 20) as $index) {
             DB::table('servicios_esenciales')->insert([
-                'puntosinteres_id' => rand(1, 50),
+                'puntosinteres_id' => rand(1, 20),
+                'Tipo'             => 'Hospitales',
+            ]);
+        }
+        foreach (range(21, 40) as $index) {
+            DB::table('servicios_esenciales')->insert([
+                'puntosinteres_id' => rand(21, 40),
                 'Tipo'             => 'Farmacias',
+            ]);
+        }
+        foreach (range(41, 60) as $index) {
+            DB::table('servicios_esenciales')->insert([
+                'puntosinteres_id' => rand(41, 60),
+                'Tipo'             => 'Cerrajerias',
+            ]);
+        }
+        foreach (range(61, 80) as $index) {
+            DB::table('servicios_esenciales')->insert([
+                'puntosinteres_id' => rand(61, 80),
+                'Tipo'             => 'Estaciones de Servicio',
+            ]);
+        }
+        foreach (range(81, 100) as $index) {
+            DB::table('servicios_esenciales')->insert([
+                'puntosinteres_id' => rand(81, 100),
+                'Tipo'             => 'Seccionales',
             ]);
         }
     }

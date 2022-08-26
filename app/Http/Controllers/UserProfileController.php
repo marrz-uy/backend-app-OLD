@@ -52,7 +52,7 @@ class UserProfileController extends Controller
         return response()->json([
             'message'     => 'Successfully registered User profile',
             'userprofile' => $userprofile,
-            'status'       => 200,
+            'status'      => 200,
         ]);
     }
 
@@ -65,8 +65,17 @@ class UserProfileController extends Controller
     public function show(Request $request)
     {
         //BUSCA POR ID DE USUARIO, NO POR EL ID DE USERPROFILE
-        $user = User::find($request->id);
+        $user        = User::findOrFail($request->id);
+        $userprofile = UserProfile::where('user_id', $request->id)->first();
+
+        if (!$userprofile) {
+            return response()->json([
+                'message' => 'Record not found.',
+            ], 404);
+        }
+
         return response()->json($user->profile);
+
     }
 
     /**
@@ -87,11 +96,11 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $userprofile   = UserProfile::where('user_id', $id)->first();
+        $userprofile = UserProfile::where('user_id', $id)->first();
 
-        if($userprofile !== null){
+        if ($userprofile !== null) {
 
             $userprofile->nacionalidad = $request->nacionalidad;
             $userprofile->f_nacimiento = $request->f_nacimiento;
@@ -102,7 +111,7 @@ class UserProfileController extends Controller
                 'message' => 'Successfully updated User profile',
                 'user'    => $userprofile,
             ]);
-        }else{
+        } else {
             return response()->json([
                 'message' => 'NO EXISTE PERFIL PARA EL USUARIO',
             ]);
@@ -118,12 +127,13 @@ class UserProfileController extends Controller
     public function destroy($id)
     {
         $userDeleted = UserProfile::where('user_id', $id)->first();
+        $eliminado   = $userDeleted;
         if ($userDeleted !== null) {
 
-            $eliminate = UserProfile::destroy($id);
+            $userDeleted->delete();
             return response()->json([
                 'message' => 'Successfully deleted User profile',
-                'user'    => $userDeleted,
+                'user'    => $eliminado,
             ]);
         } else {
             return response()->json([

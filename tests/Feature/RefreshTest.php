@@ -3,17 +3,15 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class RefreshTest extends TestCase
 {
     public function test_Refresh_token()
-    {   
-       
+    {
         //Se recupera el usuario y su JWToken
-        $user  = User::where('email', Config::get('api.apiEmail1'))->first();
+        $user  = User::where('email', getenv('API_USER_EMAIL1'))->first();
         $token = JWTAuth::fromUser($user);
 
         $response = $this->withHeaders([
