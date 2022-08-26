@@ -2,19 +2,18 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
 
-    public function test_Registro_con_valores_correctos()
+    public function test_Registrar_usuario___Operacion_Exitosa()
     {
 
-        $email                = Config::get('api.apiEmail2');
-        $password             = Config::get('api.apiPassword2');
-        $passwordConfirmation = Config::get('api.apiPasswordConfirmation2');
-        $name                 = Config::get('api.apiName2');
+        $email                = getenv('API_USER_EMAIL2');
+        $password             = getenv('API_USER_PASSWORD2');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION2');
+        $name                 = getenv('API_USER_NAME2');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -26,11 +25,27 @@ class RegisterTest extends TestCase
         ]);
 
         $response->assertStatus(201);
+
     }
 
-    public function test_Registro_con_valores_incorrectos()
+    public function test_Registrar_usuario___Confirmar_creacion___usuario_se_loguea()
     {
 
+        $email    = getenv('API_USER_EMAIL2');
+        $password = getenv('API_USER_PASSWORD2');
+
+        $response = $this->withHeaders([
+            'Content-type' => 'application/json',
+        ])->postJson('/api/login', [
+            'email'    => $email,
+            'password' => $password,
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_Registrar_usuario___Operacion_fallida___error_en_correo()
+    {
         $response = $this->withHeaders([
             'content-type' => 'application/json',
         ])->postJson('/api/register', [
@@ -42,6 +57,5 @@ class RegisterTest extends TestCase
 
         $response->assertStatus(400);
     }
-    
 
 }
