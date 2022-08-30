@@ -56,7 +56,6 @@ class DeleteProfileTest extends TestCase
         $response->assertStatus(200);
     }
 
-    //! asegurarme de que se borro
     public function test_Eliminar_perfil____Confirmar_Eliminacion()
     {
         // Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
