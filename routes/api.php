@@ -26,16 +26,12 @@ Route::POST('register', [AuthController::class, 'register']);
 Route::POST('logout', [AuthController::class, 'logout']);
 Route::POST('refresh', [AuthController::class, 'refresh']);
 
-Route::middleware('api')->get('/userProfile', function (Request $request) {
-    return $request->userProfile();
-});
-Route::GET('/userProfile/{id}', [UserProfileController::class, 'show']);
-Route::POST('/userProfile', [UserProfileController::class, 'store']);
-Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'update']);
-Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'destroy']);
+Route::GET('/userProfile/{id}', [UserProfileController::class, 'showUserProfile']);
+Route::POST('/userProfile', [UserProfileController::class, 'insertUserProfile']);
+Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'updateUserProfile']);
+Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'deleteUserProfile']);
 
 Route::GET('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombre']);
-Route::POST('/PuntosInteres', [PuntosInteresController::class, 'store']);
 
 Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);
