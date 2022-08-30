@@ -6,14 +6,14 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class PuntoDeInteresSeeder extends Seeder
+class ServiciosEsencialesSeeder extends Seeder
 {
 
     public function run()
     {
         $faker = \Faker\Factory::create();
 
-        for ($c = 0; $c < 100; $c++) {
+        for ($c = 1; $c < 100; $c++) {
             DB::table('puntosinteres')->insert([
                 'Nombre'       => $faker->randomElement($array = array('Hospital ', 'Farmacia ', 'Cerrajeria ', 'Estacion ', 'Seccional ')) . Str::random(10),
                 'Departamento' => $faker->state,
