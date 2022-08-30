@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PuntosInteresController;
-use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\TranslationsController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,11 +34,8 @@ Route::POST('/userProfile', [UserProfileController::class, 'store']);
 Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'update']);
 Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'destroy']);
 
-Route::GET('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteres']);
+Route::GET('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombre']);
 Route::POST('/PuntosInteres', [PuntosInteresController::class, 'store']);
 
-Route::middleware('api')->get('/translations', function (Request $request) {
-    return $request->translations();
-});
 Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);
