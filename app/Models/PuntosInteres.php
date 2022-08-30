@@ -14,13 +14,4 @@ class PuntosInteres extends Model
     }
     protected $table='puntosinteres';
 
-    // protected $fillable=[
-    //     'Nombre',
-    //     'Departamento',
-    //     'Ciudad',
-    //     'Direccion',
-    //     'Contacto',
-    //     'Horario',
-    //     'Descripcion'
-    // ];
 }

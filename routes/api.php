@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PuntosInteresController;
-use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\TranslationsController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,19 +26,12 @@ Route::POST('register', [AuthController::class, 'register']);
 Route::POST('logout', [AuthController::class, 'logout']);
 Route::POST('refresh', [AuthController::class, 'refresh']);
 
-Route::middleware('api')->get('/userProfile', function (Request $request) {
-    return $request->userProfile();
-});
-Route::GET('/userProfile/{id}', [UserProfileController::class, 'show']);
-Route::POST('/userProfile', [UserProfileController::class, 'store']);
-Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'update']);
-Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'destroy']);
+Route::GET('/userProfile/{id}', [UserProfileController::class, 'showUserProfile']);
+Route::POST('/userProfile', [UserProfileController::class, 'insertUserProfile']);
+Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'updateUserProfile']);
+Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'deleteUserProfile']);
 
-Route::GET('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteres']);
-Route::POST('/PuntosInteres', [PuntosInteresController::class, 'store']);
+Route::GET('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombre']);
 
-Route::middleware('api')->get('/translations', function (Request $request) {
-    return $request->translations();
-});
 Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);
