@@ -31,7 +31,8 @@ Route::POST('/userProfile', [UserProfileController::class, 'insertUserProfile'])
 Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'updateUserProfile']);
 Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'deleteUserProfile']);
 
-Route::GET('/PuntosInteres/{Categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombre']);
+Route::GET('/PuntosInteres/nombre/{nombre}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombre']);
+Route::GET('/PuntosInteres/categoria/{categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorCategoria']);
 
 Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);

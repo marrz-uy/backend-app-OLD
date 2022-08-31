@@ -13,4 +13,10 @@ class PuntosInteresController extends Controller
         return response()->json($puntos);
     }
 
+    public function ListarPuntosDeInteresPorCategoria(Request $request, $Categoria)
+    {
+        $puntos = DB::table('puntosinteres')->where('categoria', 'like', '%' . $Categoria . '%')->orderBy('Nombre')->paginate(20);
+        return response()->json($puntos);
+    }
+
 }
