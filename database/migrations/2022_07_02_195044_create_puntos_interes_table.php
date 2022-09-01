@@ -19,7 +19,6 @@ return new class extends Migration
             $table->JSON('Horario')->nullable();
             $table->String('Descripcion')->nullable();
             $table->String('Imagen')->nullable();
-            $table->set('Categoria',['Aljamiento','Gastronomia','Espectaculos','Servicios Esenciales','Actividades Infantiles','Actividades Al AireLibre','Actividades Nocturnas','Tours Predefinidos', 'Otros'])->nullable();
             $table->timestamps();
         });
     }

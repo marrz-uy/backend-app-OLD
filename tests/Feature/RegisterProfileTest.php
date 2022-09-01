@@ -50,7 +50,6 @@ class RegisterProfileTest extends TestCase
 
     }
 
-    //!ver insertado
     public function test_Registro_Perfil___Confirmar_Que_se_agrego()
     {
         //? Insert de un usuario para asegurar existencia de a quien se agregan las preferencias
