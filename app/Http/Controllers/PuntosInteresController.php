@@ -9,8 +9,23 @@ class PuntosInteresController extends Controller
 {
     public function ListarPuntosDeInteresPorNombre(Request $request, $Nombre)
     {
-        $puntos = DB::table('puntosinteres')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(12);
-        return response()->json($puntos);
+        $puntosPorNombre = DB::table('puntosinteres')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(12);
+        return response()->json($puntosPorNombre);
+    }
+
+    public function ListarPuntosDeInteresPorCategoria(Request $request, $Categoria)
+    {
+        if ($Categoria === 'Servicios Esenciales') {
+            $tabla = 'servicios_esenciales';
+        }
+
+        if ($Categoria === 'Espectaculos') {
+            $tabla = 'espectaculos';
+        }
+
+        $puntosPorCategoria = DB::table('puntosinteres')->Join($tabla, 'puntosinteres.id', '=', 'puntosinteres_id')->orderBy('Tipo')->paginate(12);
+        return response()->json($puntosPorCategoria);
+
     }
 
 }

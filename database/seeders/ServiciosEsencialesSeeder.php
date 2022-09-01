@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class ServiciosEsencialesSeeder extends Seeder
 {
@@ -15,12 +14,13 @@ class ServiciosEsencialesSeeder extends Seeder
 
         for ($c = 1; $c < 100; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => $faker->randomElement($array = array('Hospital ', 'Farmacia ', 'Cerrajeria ', 'Estacion ', 'Seccional ')) . Str::random(10),
+                'Nombre'       => $faker->randomElement($array = array('Hospital ', 'Farmacia ', 'Cerrajeria ', 'Estacion ', 'Seccional ')) . $faker->city,
                 'Departamento' => $faker->state,
                 'Ciudad'       => $faker->city,
                 'Direccion'    => $faker->address,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
+                'Categoria'    => 'Servicios Esenciales',
             ]);
         }
 
