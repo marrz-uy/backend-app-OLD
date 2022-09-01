@@ -18,7 +18,7 @@ class PuntosInteresController extends Controller
         if ($Categoria === 'Servicios Esenciales') {
             $tabla = 'servicios_esenciales';
         }
-        
+
         if ($Categoria === 'Espectaculos') {
             $tabla = 'espectaculos';
         }
