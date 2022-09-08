@@ -15,6 +15,8 @@ jobs:
         - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=10s --health-retries=10
     runs-on: ubuntu-latest
+    env:
+      DB_HOST=mysql
     container:
       image: ggmartinez/imagencita
     steps:
