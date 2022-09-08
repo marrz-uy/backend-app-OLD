@@ -25,10 +25,15 @@ jobs:
     container:
       image: ggmartinez/imagencita
     steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - name: Copiar archivo .env
-        run: cp ./.env.example .env 
+        run: cp .env.example .env 
       - name: Instalar paquetes de Composer 
         run: composer install 
+      - name: Generar claves de laravel 
+        run: php artisan key:generate
       - name: Ejecutar migraciones 
         run: php artisan migrate 
       - name: Ejecutar seeders 
