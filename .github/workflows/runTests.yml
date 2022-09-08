@@ -21,7 +21,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: root
         ports:
         - 3306:3306
-    runs-on: ggmartinez/imagencita
+    runs-on: [self-hosted]
     container:
       image: ggmartinez/imagencita
     steps:
