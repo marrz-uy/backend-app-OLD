@@ -23,19 +23,14 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - name: Copiar archivo .env
-        run: cp .env.example .env 
-      - name: Instalar paquetes de Composer 
-        run: composer install 
-      - name: Generar claves de laravel 
-        run: php artisan key:generate
-      - name: Esperar a que el contenedor de MySQL inicie 
-        run: sleep 15
-      - name: Ejecutar migraciones 
-        run: php artisan migrate 
-      - name: Ejecutar seeders 
-        run:  |
-          php artisan db:seed --class=EspectaculoSeeder
-          php artisan db:seed --class=ServiciosEsencialesSeeder
+      - name: Preparar Laravel
+        run: |
+          cp .env.example .env 
+          composer install 
+          php artisan key:generate
+      - name: Preparar base de datos para pruebas
+        run: |
+          php artisan migrate 
+          php artisan db:seed
       - name: Ejecutar pruebas
         run: php artisan test
