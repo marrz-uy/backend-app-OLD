@@ -4,23 +4,11 @@ on:
     branches:
       - github-actions
 env: 
-  DB_CONNECTION: mysql
-  DB_HOST: 127.0.0.1
-  DB_PORT: 3306
-  DB_DATABASE: laravel
-  DB_USERNAME: root
-  DB_PASSWORD: root
+  DB_CONNECTION: sqlite
+  DB_DATABASE: ":memory:"
 
 jobs:
   RunTest:
-    services:
-      mysql:
-        image: mysql:8
-        env:
-          MYSQL_DATABASE: laravel
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-        - 3306:3306
     runs-on: ubuntu-latest
     container:
       image: ggmartinez/imagencita
