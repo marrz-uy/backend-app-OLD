@@ -26,7 +26,7 @@ jobs:
       image: ggmartinez/imagencita
     steps:
       - name: Copiar archivo .env
-        run: cp .env.example .env 
+        run: cp ./.env.example .env 
       - name: Instalar paquetes de Composer 
         run: composer install 
       - name: Ejecutar migraciones 
