@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'userUpdate']]);
     }
 
     public function login(Request $request)
@@ -79,15 +79,105 @@ class AuthController extends Controller
         ], 201);
     }
 
+    public function userEmailUpdate(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:100|unique:users',
+
+        ], [
+            'email.required' => 'El Email es obligatorio',
+            'email.unique'   => 'El Email ya existe',
+            'email.email'    => 'El Email debe tener un @',
+        ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $userToUpdate = User::findOrFail($id);
+
+        if ($userToUpdate !== null) {
+
+            $userToUpdate->email = $request->email;
+            $userToUpdate->save();
+
+            return response()->json([
+                'message' => 'Successfully updated User email',
+                'user'    => $userToUpdate,
+            ]);
+        }
+    }
+
+    public function userNameUpdate(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:2|max:100',
+
+        ], [
+            'name.required' => 'El Usuario es Obligatorio',
+            'name.min'      => 'El Usuario debe tener 2 caracteres como minimo',
+        ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $userToUpdate = User::findOrFail($id);
+
+        if ($userToUpdate !== null) {
+            $userToUpdate->name = $request->name;
+            $userToUpdate->save();
+
+            return response()->json([
+                'message' => 'Successfully updated User name',
+                'user'    => $userToUpdate,
+            ]);
+        }
+    }
+
+    public function userPasswordUpdate(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'password'             => 'required|string|min:8',
+            'passwordConfirmation' => 'required|min:8|same:password',
+
+        ], [
+            'password.required'             => 'La contraseña es obligatoria',
+            'password.min'                  => 'La contraseña debe contener 8 caracteres como minimo',
+            'passwordConfirmation.required' => 'La Confirmacion de contraseña es obligatoria',
+            'passwordConfirmation.same'     => 'Las Contraseñas no coinciden',
+            'passwordConfirmation.min'      => 'La Confirmacion de contraseña debe tener 8 caracteres como minimo',
+        ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $userToUpdate = User::findOrFail($id);
+
+        if ($userToUpdate !== null) {
+            $userToUpdate->password = bcrypt($request->password);
+            $userToUpdate->save();
+
+            return response()->json([
+                'message' => 'Successfully updated User password',
+                'user'    => $userToUpdate,
+
+            ]);
+        }
+    }
+
     public function logout()
     {
         auth()->logout();
 
         return response()->json([
             'message' => 'Successfully logged out',
-        ]); 
+        ]);
     }
-
 
     public function refresh()
     {
