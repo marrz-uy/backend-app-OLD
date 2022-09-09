@@ -25,6 +25,9 @@ Route::POST('login', [AuthController::class, 'login']);
 Route::POST('register', [AuthController::class, 'register']);
 Route::POST('logout', [AuthController::class, 'logout']);
 Route::POST('refresh', [AuthController::class, 'refresh']);
+Route::PATCH('updateEmail/{id}', [AuthController::class, 'userEmailUpdate']);
+Route::PATCH('updateName/{id}', [AuthController::class, 'userNameUpdate']);
+Route::PATCH('updatePassword/{id}', [AuthController::class, 'userPasswordUpdate']);
 
 Route::GET('/userProfile/{id}', [UserProfileController::class, 'showUserProfile']);
 Route::POST('/userProfile', [UserProfileController::class, 'insertUserProfile']);
