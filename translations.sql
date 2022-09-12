@@ -31,9 +31,7 @@ CREATE TABLE `translations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `tagName` varchar(255) NOT NULL DEFAULT 'tagname',
   `es` varchar(255) DEFAULT NULL,
-  `en` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `en` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
