@@ -20,7 +20,6 @@ class CreateTranslationsTable extends Migration
             $table->string('tagName')->default('tagname');
             $table->string('es')->nullable();
             $table->string('en')->nullable();
-            $table->timestamps();
         });
     }
 
