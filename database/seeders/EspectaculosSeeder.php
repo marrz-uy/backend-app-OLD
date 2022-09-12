@@ -21,7 +21,6 @@ class EspectaculosSeeder extends Seeder
                 'Direccion'    => $faker->address,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'Categoria'         => 'Espectaculos',
             ]);
         }
 
