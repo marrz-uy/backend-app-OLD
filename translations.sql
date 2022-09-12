@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `translations` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tagName` varchar(255) NOT NULL DEFAULT 'tagname',
+  `tagName` varchar(255) NOT NULL DEFAULT 'tagame',
   `es` varchar(255) DEFAULT NULL,
   `en` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `translations` (
 -- Volcado de datos para la tabla `translations`
 --
 
-INSERT INTO `translations` (`id`, `tagName`, `es`, `en`, `created_at`, `updated_at`) VALUES
+INSERT INTO `translations` (`id`, `tagName`, `es`, `en`) VALUES
 (1, 'flag', 'https://flagcdn.com/h40/uy.png', 'https://flagcdn.com/h20/gb.png'),
 (2, 'splashScreenTextSup', 'Arma tu tour', 'Build your tour'),
 (3, 'splashScreenTextInf', 'o descubri los del momento', 'or discover the ones of the moment'),
