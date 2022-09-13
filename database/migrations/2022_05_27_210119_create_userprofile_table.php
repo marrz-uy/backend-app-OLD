@@ -25,7 +25,7 @@ class CreateUserprofileTable extends Migration
                 ->onUpdate('cascade');
             $table->string('nacionalidad');
             $table->date('f_nacimiento');
-            $table->json('preferencias');
+            $table->string('preferencias');
             $table->timestamps();
         });
     }
