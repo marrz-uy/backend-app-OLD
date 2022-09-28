@@ -30,6 +30,7 @@ class UpdatePerfilTest extends TestCase
     public function test_Actualizar_perfil___Confirmar_actualizacion()
     {
         $email = getenv('API_USER_EMAIL4');
+        
         $user  = User::where('email', $email)->first();
         $token = JWTAuth::fromUser($user);
 
