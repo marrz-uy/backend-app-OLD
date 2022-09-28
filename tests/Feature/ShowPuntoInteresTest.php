@@ -14,7 +14,7 @@ class ShowPuntoInteresTest extends TestCase
 
     public function test_Paginacion()
     {
-        $response = $this->get('/api/PuntosInteres/nombre/farmacia');
+        $response = $this->get('/api/PuntosInteres/categoria/Espectaculos');
         $response->assertJsonCount(12, "data");
         $response->assertJsonStructure(["next_page_url"]);
         $response->assertJsonStructure(["last_page_url"]);

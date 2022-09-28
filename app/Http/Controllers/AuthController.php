@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'deleteUsersAfterTesting']]);
     }
 
     public function login(Request $request)
@@ -194,6 +194,24 @@ class AuthController extends Controller
             'status'       => 200,
             'userProfile'  => auth()->user()->profile,
         ]);
+    }
+
+    public function deleteUsersAfterTesting(Request $request)
+    {
+        $userDeleted3 = User::where('email', $request->user3)->first();
+        $userDeleted3->delete();
+
+        $userDeleted4 = User::where('email', $request->user4)->first();
+        $userDeleted4->delete();
+
+        $userDeleted1 = User::where('email', $request->user1)->first();
+        $userDeleted1->delete();
+
+        $userDeleted2 = User::where('email', $request->user2)->first();
+        $userDeleted2->delete();
+
+        return response()->json(['mensaje' => 'Usuarios eliminados'], 200);
+
     }
 
 }
