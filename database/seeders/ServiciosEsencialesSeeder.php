@@ -12,47 +12,115 @@ class ServiciosEsencialesSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($c = 1; $c < 100; $c++) {
+        for ($c = 1; $c < 21; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => $faker->randomElement($array = array('Hospital ', 'Farmacia ', 'Cerrajeria ', 'Estacion ', 'Seccional ')) . $faker->city,
+                'Nombre'       => 'Hospital ' . $faker->city,
                 'Departamento' => $faker->state,
                 'Ciudad'       => $faker->city,
                 'Direccion'    => $faker->address,
+                'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Hospital ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Hospital ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'Categoria'    => 'Servicios Esenciales',
+                'latitud' => rand(-34749900, -34935905),
+                'longitud' => rand(-55833600,-56333300)
             ]);
-        }
 
-        foreach (range(1, 20) as $index) {
             DB::table('servicios_esenciales')->insert([
-                'puntosinteres_id' => rand(1, 20),
+                'puntosinteres_id' => $c,
                 'Tipo'             => 'Hospitales',
             ]);
         }
-        foreach (range(21, 40) as $index) {
+
+        for ($c = 21; $c < 41; $c++) {
+            DB::table('puntosinteres')->insert([
+                'Nombre'       => 'Farmacia ' . $faker->city,
+                'Departamento' => $faker->state,
+                'Ciudad'       => $faker->city,
+                'Direccion'    => $faker->address,
+                'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Farmacia ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Farmacia ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
+                'latitud' => rand(-34749900, -34935905),
+                'longitud' => rand(-55833600,-56333300)
+            ]);
+
             DB::table('servicios_esenciales')->insert([
-                'puntosinteres_id' => rand(21, 40),
+                'puntosinteres_id' => $c,
                 'Tipo'             => 'Farmacias',
             ]);
         }
-        foreach (range(41, 60) as $index) {
+
+        for ($c = 41; $c < 61; $c++) {
+            DB::table('puntosinteres')->insert([
+                'Nombre'       => 'Cerrajeria ' . $faker->city,
+                'Departamento' => $faker->state,
+                'Ciudad'       => $faker->city,
+                'Direccion'    => $faker->address,
+                'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Cerrajeria ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Cerrajeria ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
+                'latitud' => rand(-34749900, -34935905),
+                'longitud' => rand(-55833600,-56333300)
+            ]);
+
             DB::table('servicios_esenciales')->insert([
-                'puntosinteres_id' => rand(41, 60),
+                'puntosinteres_id' => $c,
                 'Tipo'             => 'Cerrajerias',
             ]);
         }
-        foreach (range(61, 80) as $index) {
+
+        for ($c = 61; $c < 81; $c++) {
+            DB::table('puntosinteres')->insert([
+                'Nombre'       => 'Estacion ' . $faker->city,
+                'Departamento' => $faker->state,
+                'Ciudad'       => $faker->city,
+                'Direccion'    => $faker->address,
+                'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Estacion ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Estacion ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
+                'latitud' => rand(-34749900, -34935905),
+                'longitud' => rand(-55833600,-56333300)
+            ]);
+
             DB::table('servicios_esenciales')->insert([
-                'puntosinteres_id' => rand(61, 80),
+                'puntosinteres_id' => $c,
                 'Tipo'             => 'Estaciones de Servicio',
             ]);
         }
-        foreach (range(81, 100) as $index) {
+
+        for ($c = 81; $c < 101; $c++) {
+            DB::table('puntosinteres')->insert([
+                'Nombre'       => 'Seccional ' . $faker->city,
+                'Departamento' => $faker->state,
+                'Ciudad'       => $faker->city,
+                'Direccion'    => $faker->address,
+                'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Seccional ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Seccional ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
+                'latitud' => rand(-34749900, -34935905),
+                'longitud' => rand(-55833600,-56333300)
+            ]);
+
             DB::table('servicios_esenciales')->insert([
-                'puntosinteres_id' => rand(81, 100),
+                'puntosinteres_id' => $c,
                 'Tipo'             => 'Seccionales',
             ]);
         }
+
     }
 }
