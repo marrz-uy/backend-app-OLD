@@ -105,6 +105,7 @@ INSERT INTO `translations` (`id`, `tagName`, `es`, `en`) VALUES
 (64, 'seeMoreCategories', 'Ver mas Categorias', 'See more categories'),
 (65, 'seeLessCategories', 'Ver menos Categorias', 'See less categories');
 
+
 --
 -- Índices para tablas volcadas
 --
