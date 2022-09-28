@@ -210,8 +210,8 @@ class AuthController extends Controller
         $userDeleted2 = User::where('email', $request->user2)->first();
         $userDeleted2->delete();
 
-        return response()->json(['mensaje'=> 'Usuarios eliminados'], 200);
-       
+        return response()->json(['mensaje' => 'Usuarios eliminados'], 200);
+
     }
 
 }
