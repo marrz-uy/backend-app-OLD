@@ -40,3 +40,8 @@ Route::GET('/PuntosInteres/categoria/{categoria}', [PuntosInteresController::cla
 
 Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);
+
+
+
+/* PRUEBAS */
+Route::GET('/PuntosInteresCercanos/nombre/{nombre}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombreCercanos']);

@@ -21,12 +21,9 @@ class CreateEspectaculosTable extends Migration
             ->constrained('puntosinteres')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->string('artista')->nullable();
-            $table->decimal('precio', 6, 2)->nullable()->default(0.00);
-            $table->date('fecha_inicio')->nullable();
-            $table->date('fecha_fin')->nullable();
-            $table->set('Tipo',['Cine','Teatro','Carnaval','Futbol']);
+            $table->set('Tipo',['Cine','Teatro','Carnaval','EventoDeportivo']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
