@@ -8,10 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class PuntosInteres extends Model
 {
     use HasFactory;
+
+    protected $table = 'puntosinteres';
+
     public function ServiciosEsenciales()
     {
         return $this->hasMany(ServiciosEsenciales::class);
     }
-    protected $table='puntosinteres';
 
+    public function VerTelefonos()
+    {
+        return $this->hasMany(Telefonos::class, 'puntosinteres_id', 'id');
+
+    }
 }

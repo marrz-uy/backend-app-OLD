@@ -24,8 +24,10 @@ class EspectaculosSeeder extends Seeder
                 'Instagram'      => 'https://www.instagram.com/' . 'Cine ' . $c,
                 'Descripcion'    => $faker->text($maxNbChars = 200),
                 'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
-                'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330),
+                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
+                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
                 "created_at"     => null,
                 "updated_at"     => null,
             ]);
@@ -50,15 +52,17 @@ class EspectaculosSeeder extends Seeder
                 'Instagram'      => 'https://www.instagram.com/' . 'Teatro ' . $c,
                 'Descripcion'    => $faker->text($maxNbChars = 200),
                 'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
-                'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330),
+                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
+                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
                 "created_at"     => null,
                 "updated_at"     => null,
             ]);
 
             DB::table('espectaculos')->insert([
                 'puntosinteres_id' => $c,
-                'Tipo'             => 'Cine',
+                'Tipo'             => 'Teatro',
                 "created_at"       => null,
                 "updated_at"       => null,
             ]);
@@ -76,15 +80,17 @@ class EspectaculosSeeder extends Seeder
                 'Instagram'      => 'https://www.instagram.com/' . 'Carnaval ' . $c,
                 'Descripcion'    => $faker->text($maxNbChars = 200),
                 'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
-                'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330),
+                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
+                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
                 "created_at"     => null,
                 "updated_at"     => null,
             ]);
 
             DB::table('espectaculos')->insert([
                 'puntosinteres_id' => $c,
-                'Tipo'             => 'Cine',
+                'Tipo'             => 'Carnaval',
                 "created_at"       => null,
                 "updated_at"       => null,
             ]);
@@ -103,15 +109,17 @@ class EspectaculosSeeder extends Seeder
                 'Instagram'      => 'https://www.instagram.com/' . 'Futbol ' . $c,
                 'Descripcion'    => $faker->text($maxNbChars = 200),
                 'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
-                'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330),
+                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
+                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
                 "created_at"     => null,
                 "updated_at"     => null,
             ]);
 
             DB::table('espectaculos')->insert([
                 'puntosinteres_id' => $c,
-                'Tipo'             => 'Cine',
+                'Tipo'             => 'EventoDeportivo',
                 "created_at"       => null,
                 "updated_at"       => null,
             ]);

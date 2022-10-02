@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserProfileSeeder::class,
             ServiciosEsencialesSeeder::class,
             EspectaculosSeeder::class,
+            EventosSeeder::class,
         ]);
     }
 }

@@ -9,25 +9,43 @@ class PuntosInteresController extends Controller
 {
     public function ListarPuntosDeInteresPorNombre(Request $request, $Nombre)
     {
+        //TODO poder ver resultados de ambas consultas paginados en una si nombre de ambas son similares 
         $puntosPorNombre = DB::table('puntosinteres')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(12);
-        return response()->json($puntosPorNombre);
+
+        $eventosPorNombre = DB::table('eventos')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(12);
+        
+        if ($puntosPorNombre == '') {
+
+            return response()->json($eventosPorNombre);
+        } else {
+            return response()->json($puntosPorNombre);
+        }
+
+        
+
     }
 
     public function ListarPuntosDeInteresPorNombreCercanos(Request $request, $Nombre)
     {
-        $latpunto = $request->lat;
+        // VALORES RECIBIDOS
+        $latpunto  = $request->lat;
         $longpunto = $request->long;
+        $distancia = $request->dist;
+        // LATITUD
+        $latMIN = $latpunto - ($distancia);
+        $latMAX = $latpunto + ($distancia);
+        // LONGITUD
+        $longMIN = $longpunto - ($distancia);
+        $longMAX = $longpunto + ($distancia);
 
+        // WERE-WEREBETWEEN FUNCIONANDO BIEN
         $puntosPorNombre = DB::table('puntosinteres')
-        ->where('nombre', 'like', '%' . $Nombre . '%')
-        ->whereBetween('Latitud', [$latpunto + 500, $latpunto - 500], 'AND', 'Longitud',[$longpunto + 500, $longpunto - 500])
-        ->paginate(12);
-        
-        // return response()->json(gettype($puntosPorNombre));
+            ->where('nombre', 'like', '%' . $Nombre . '%')
+            ->whereBetween('Latitud', [$latMIN, $latMAX])
+            ->whereBetween('Longitud', [$longMIN, $longMAX])->paginate(12);
+
         return response()->json($puntosPorNombre);
     }
-
-
 
     public function ListarPuntosDeInteresPorCategoria(Request $request, $Categoria)
     {
@@ -39,7 +57,8 @@ class PuntosInteresController extends Controller
             $tabla = 'espectaculos';
         }
 
-        $puntosPorCategoria = DB::table('puntosinteres')->Join($tabla, 'puntosinteres.id', '=', 'puntosinteres_id')->orderBy('Tipo')->paginate(12);
+        $puntosPorCategoria = DB::table('puntosinteres')
+            ->Join($tabla, 'puntosinteres.id', '=', 'puntosinteres_id')->orderBy('Tipo')->paginate(12);
         return response()->json($puntosPorCategoria);
 
     }
