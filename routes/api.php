@@ -42,6 +42,5 @@ Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);
 
 
-
 /* PRUEBAS */
-Route::GET('/PuntosInteresCercanos/nombre/{nombre}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombreCercanos']);
+Route::POST('/PuntosInteresCercanos/nombre/{nombre}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombreCercanos']);

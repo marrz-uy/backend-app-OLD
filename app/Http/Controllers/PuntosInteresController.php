@@ -9,11 +9,15 @@ class PuntosInteresController extends Controller
 {
     public function ListarPuntosDeInteresPorNombre(Request $request, $Nombre)
     {
-        //TODO poder ver resultados de ambas consultas paginados en una si nombre de ambas son similares 
-        $puntosPorNombre = DB::table('puntosinteres')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(12);
+        //TODO poder ver resultados de ambas consultas paginados en una si nombre de ambas son similares
+        $puntosPorNombre = DB::table('puntosinteres')
+        ->where('nombre', 'like', '%' . $Nombre . '%')->paginate(12);
 
-        $eventosPorNombre = DB::table('eventos')->where('nombre', 'like', '%' . $Nombre . '%')->paginate(12);
-        
+        $eventosPorNombre = DB::table('eventos')
+        ->where('nombre', 'like', '%' . $Nombre . '%')
+        ->orWhere('tipo', 'like', '%' . $Nombre . '%')
+        ->paginate(12);
+
         if ($puntosPorNombre == '') {
 
             return response()->json($eventosPorNombre);
@@ -21,16 +25,15 @@ class PuntosInteresController extends Controller
             return response()->json($puntosPorNombre);
         }
 
-        
-
     }
 
     public function ListarPuntosDeInteresPorNombreCercanos(Request $request, $Nombre)
     {
+
         // VALORES RECIBIDOS
-        $latpunto  = $request->lat;
-        $longpunto = $request->long;
-        $distancia = $request->dist;
+        $latpunto  = $request->latitudAEnviar;
+        $longpunto = $request->longitudAEnviar;
+        $distancia = $request->distancia;
         // LATITUD
         $latMIN = $latpunto - ($distancia);
         $latMAX = $latpunto + ($distancia);
@@ -44,7 +47,17 @@ class PuntosInteresController extends Controller
             ->whereBetween('Latitud', [$latMIN, $latMAX])
             ->whereBetween('Longitud', [$longMIN, $longMAX])->paginate(12);
 
-        return response()->json($puntosPorNombre);
+        $eventosPorNombre = DB::table('eventos')
+        ->where('nombre', 'like', '%' . $Nombre . '%')
+        ->orWhere('tipo', 'like', '%' . $Nombre . '%')
+        ->paginate(12);
+
+        if ($puntosPorNombre == '') {
+
+            return response()->json($eventosPorNombre);
+        } else {
+            return response()->json($puntosPorNombre);
+        }
     }
 
     public function ListarPuntosDeInteresPorCategoria(Request $request, $Categoria)
