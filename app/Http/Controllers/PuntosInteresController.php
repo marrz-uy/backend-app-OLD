@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class PuntosInteresController extends Controller
 {
     //**LISTAR PUNTOS DE INTERES POR NOMBRE**
-    /* public function ListarPuntosDeInteresPorNombre(Request $request, $Nombre)
+    public function ListarPuntosDeInteresPorNombre(Request $request, $Nombre)
     {
         //TODO poder ver resultados de ambas consultas paginados en una si nombre de ambas son similares
         $puntosPorNombre = DB::table('puntosinteres')
@@ -26,7 +26,7 @@ class PuntosInteresController extends Controller
             return response()->json($puntosPorNombre);
         }
 
-    } */
+    }
 
     //**LISTAR PUNTOS DE INTERES POR NOMBRE con DISTANCIA**
     public function ListarPuntosDeInteresPorNombreCercanos(Request $request, $Nombre)
