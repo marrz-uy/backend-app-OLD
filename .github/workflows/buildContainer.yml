@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: marrzuy/backend-app:$GITHUB_SHA
+          tags: marrzuy/backend-app:${GITHUB_SHA}
      
 
 
