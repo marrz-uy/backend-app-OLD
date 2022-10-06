@@ -1,8 +1,8 @@
 name: TestAndBuild
 on:
-  pull_request:
+  push:
     branches:
-      - main 
+      - docker-build
 
 jobs:
   BuildContainer: 
@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: marrzuy/backend-app:test
+          tags: marrzuy/backend-app:$GITHUB_SHA
      
 
 
