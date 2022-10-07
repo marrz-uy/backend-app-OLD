@@ -24,8 +24,8 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Hospital ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -46,8 +46,8 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Farmacia ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -68,8 +68,8 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Cerrajeria ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -90,8 +90,8 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Estacion ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -112,8 +112,8 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Seccional ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
