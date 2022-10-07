@@ -23,6 +23,10 @@ class PuntosInteresController extends Controller
             $tabla = 'espectaculos';
         }
 
+        if ($Categoria === 'Transporte') {
+            $tabla = 'transporte';
+        }
+
         $puntosPorCategoria = DB::table('puntosinteres')->Join($tabla, 'puntosinteres.id', '=', 'puntosinteres_id')->orderBy('Tipo')->paginate(12);
         return response()->json($puntosPorCategoria);
 

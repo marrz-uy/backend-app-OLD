@@ -24,8 +24,8 @@ class EspectaculosSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Cine ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('espectaculos')->insert([
@@ -49,8 +49,8 @@ class EspectaculosSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Teatro ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('espectaculos')->insert([
@@ -74,8 +74,8 @@ class EspectaculosSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Carnaval ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('espectaculos')->insert([
@@ -100,8 +100,8 @@ class EspectaculosSeeder extends Seeder
                 'Instagram' => 'https://www.instagram.com/' . 'Futbol ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
-                'latitud' => rand(-34749900, -34935905),
-                'longitud' => rand(-55833600,-56333300)
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('espectaculos')->insert([

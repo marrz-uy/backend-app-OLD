@@ -15,7 +15,11 @@ class CreateTransporteTable extends Migration
     {
         Schema::create('transporte', function (Blueprint $table) {
             $table->id();
-            $table->set('Tipo',['Ómnibus','Taxi']);
+            $table->foreignId('puntosinteres_id')
+            ->constrained('puntosinteres')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->set('Tipo',['Omnibus','Taxi']);
             $table->timestamps();
         });
     }
