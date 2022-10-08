@@ -19,7 +19,7 @@ class CreateEventosTable extends Migration
                 ->constrained('puntosinteres')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->String('Nombre');
+            $table->String('NombreEvento');
             $table->set('LugarDeVentaDeEntradas', ['Abitab', 'RedPagos', 'TickAntel', 'LugarDelEvento', 'AccesoYa', 'RedTicket']);
             $table->date('FechaInicio');
             $table->date('FechaFin');

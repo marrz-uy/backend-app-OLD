@@ -15,7 +15,7 @@ class EventosSeeder extends Seeder
         //!CINES
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 101,
-            'Nombre'                 => 'La pistola desnuda',
+            'NombreEvento'           => 'La pistola desnuda',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -26,7 +26,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 102,
-            'Nombre'                 => 'Titanic',
+            'NombreEvento'           => 'Titanic',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -37,7 +37,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 103,
-            'Nombre'                 => 'El justiciero',
+            'NombreEvento'           => 'El justiciero',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -48,7 +48,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 104,
-            'Nombre'                 => 'The Dark knight',
+            'NombreEvento'           => 'The Dark knight',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -59,7 +59,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 105,
-            'Nombre'                 => 'Superman',
+            'NombreEvento'           => 'Superman',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -72,7 +72,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 121,
-            'Nombre'                 => 'Hamlet',
+            'NombreEvento'           => 'Hamlet',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -83,7 +83,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 122,
-            'Nombre'                 => 'Romeo y Julieta',
+            'NombreEvento'           => 'Romeo y Julieta',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -94,7 +94,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 123,
-            'Nombre'                 => 'Sueño de una noche de verano',
+            'NombreEvento'           => 'Sueño de una noche de verano',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -105,7 +105,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 124,
-            'Nombre'                 => 'La casa de Bernarda Alba',
+            'NombreEvento'           => 'La casa de Bernarda Alba',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -116,7 +116,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 125,
-            'Nombre'                 => 'La Celestina',
+            'NombreEvento'           => 'La Celestina',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -129,7 +129,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 141,
-            'Nombre'                 => 'Los Choby’s',
+            'NombreEvento'           => 'Los Choby’s',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -140,7 +140,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 142,
-            'Nombre'                 => 'Tabú',
+            'NombreEvento'           => 'Tabú',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -151,7 +151,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 143,
-            'Nombre'                 => 'Sociedad Anónima',
+            'NombreEvento'           => 'Sociedad Anónima',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -162,7 +162,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 144,
-            'Nombre'                 => 'Yambo Kenia',
+            'NombreEvento'           => 'Yambo Kenia',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -173,7 +173,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 145,
-            'Nombre'                 => 'Los Muchachos',
+            'NombreEvento'           => 'Los Muchachos',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -186,7 +186,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 161,
-            'Nombre'                 => 'Partido de futbol',
+            'NombreEvento'           => 'Partido de futbol',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -197,7 +197,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 162,
-            'Nombre'                 => 'Partido de basketball',
+            'NombreEvento'           => 'Partido de basketball',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-09-29',
             'FechaFin'               => '2022-09-29',
@@ -208,7 +208,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 163,
-            'Nombre'                 => 'Carrera de F1',
+            'NombreEvento'           => 'Carrera de F1',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -219,7 +219,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 164,
-            'Nombre'                 => 'Partido de volleyball',
+            'NombreEvento'           => 'Partido de volleyball',
             'LugarDeVentaDeEntradas' => 'Abitab',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
@@ -230,7 +230,7 @@ class EventosSeeder extends Seeder
 
         DB::table('eventos')->insert([
             'puntosinteres_id'       => 165,
-            'Nombre'                 => 'Partido de ping pong',
+            'NombreEvento'           => 'Partido de ping pong',
             'LugarDeVentaDeEntradas' => 'RedPagos',
             'FechaInicio'            => '2022-11-29',
             'FechaFin'               => '2022-11-29',
