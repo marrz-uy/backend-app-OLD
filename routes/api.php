@@ -30,6 +30,7 @@ Route::PATCH('updateName/{id}', [AuthController::class, 'userNameUpdate']);
 Route::PATCH('updatePassword/{id}', [AuthController::class, 'userPasswordUpdate']);
 Route::POST('deleteUsers', [AuthController::class, 'deleteUsersAfterTesting']);
 
+
 Route::GET('/userProfile/{id}', [UserProfileController::class, 'showUserProfile']);
 Route::POST('/userProfile', [UserProfileController::class, 'insertUserProfile']);
 Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'updateUserProfile']);

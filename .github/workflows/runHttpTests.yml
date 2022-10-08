@@ -1,8 +1,9 @@
-name: Tests
+name: TestAndBuild
 on:
-  push:
+  pull_request:
     branches:
-      - github-actions
+      - stage
+
 jobs:
   RunTest:
     services:
@@ -34,3 +35,9 @@ jobs:
           php artisan db:seed
       - name: Ejecutar pruebas
         run: php artisan test
+  
+
+
+
+
+

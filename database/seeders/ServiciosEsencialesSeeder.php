@@ -20,17 +20,13 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Ciudad'         => $faker->city,
                 'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'HoraDeCierre'   => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook'       => 'https://www.facebook.com/' . 'Hospital ' . $c,
-                'Instagram'      => 'https://www.instagram.com/' . 'Hospital ' . $c,
-                'Descripcion'    => $faker->text($maxNbChars = 200),
-                'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Hospital ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Hospital ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
-                'Longitud'       => rand(5583360, 5633330),
-                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
-                "created_at"     => null,
-                "updated_at"     => null,
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -48,17 +44,13 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Ciudad'         => $faker->city,
                 'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'HoraDeCierre'   => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook'       => 'https://www.facebook.com/' . 'Farmacia ' . $c,
-                'Instagram'      => 'https://www.instagram.com/' . 'Farmacia ' . $c,
-                'Descripcion'    => $faker->text($maxNbChars = 200),
-                'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Farmacia ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Farmacia ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
-                'Longitud'       => rand(5583360, 5633330),
-                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
-                "created_at"     => null,
-                "updated_at"     => null,
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -74,17 +66,13 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Ciudad'         => $faker->city,
                 'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'HoraDeCierre'   => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook'       => 'https://www.facebook.com/' . 'Cerrajeria ' . $c,
-                'Instagram'      => 'https://www.instagram.com/' . 'Cerrajeria ' . $c,
-                'Descripcion'    => $faker->text($maxNbChars = 200),
-                'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Cerrajeria ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Cerrajeria ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
-                'Longitud'       => rand(5583360, 5633330),
-                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
-                "created_at"     => null,
-                "updated_at"     => null,
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -100,17 +88,13 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Ciudad'         => $faker->city,
                 'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'HoraDeCierre'   => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook'       => 'https://www.facebook.com/' . 'Estacion ' . $c,
-                'Instagram'      => 'https://www.instagram.com/' . 'Estacion ' . $c,
-                'Descripcion'    => $faker->text($maxNbChars = 200),
-                'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Estacion ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Estacion ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
-                'Longitud'       => rand(5583360, 5633330),
-                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
-                "created_at"     => null,
-                "updated_at"     => null,
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([
@@ -126,17 +110,13 @@ class ServiciosEsencialesSeeder extends Seeder
                 'Ciudad'         => $faker->city,
                 'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'HoraDeCierre'   => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook'       => 'https://www.facebook.com/' . 'Seccional ' . $c,
-                'Instagram'      => 'https://www.instagram.com/' . 'Seccional ' . $c,
-                'Descripcion'    => $faker->text($maxNbChars = 200),
-                'Imagen'         => $faker->imageUrl($width = 640, $height = 480),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Seccional ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Seccional ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
-                'Longitud'       => rand(5583360, 5633330),
-                // 'Latitud'        => $faker->randomFloat($nbMaxDecimals = 5, $min = -34.74990, $max = -34.93590),
-                // 'Longitud'       => $faker->randomFloat($nbMaxDecimals = 5, $min = -55.83360, $max = -56.33330),
-                "created_at"     => null,
-                "updated_at"     => null,
+                'Longitud'       => rand(5583360, 5633330)
             ]);
 
             DB::table('servicios_esenciales')->insert([

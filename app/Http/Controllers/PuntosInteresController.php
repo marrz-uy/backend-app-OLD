@@ -97,6 +97,10 @@ class PuntosInteresController extends Controller
         if ($Categoria === 'Espectaculos') {
             $tabla = 'espectaculos';
         }
+        
+         if ($Categoria === 'Transporte') {
+            $tabla = 'transporte';
+        }
 
         // VALORES RECIBIDOS
         $latpunto  = $request->latitudAEnviar;
