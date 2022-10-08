@@ -13,11 +13,12 @@ class ServiciosEsencialesSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         for ($c = 1; $c < 21; $c++) {
+
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Hospital ' . $faker->city,
-                'Departamento' => $faker->state,
-                'Ciudad'       => $faker->city,
-                'Direccion'    => $faker->address,
+                'Nombre'         => 'Hospital ' . $faker->city,
+                'Departamento'   => $faker->state,
+                'Ciudad'         => $faker->city,
+                'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'Facebook' => 'https://www.facebook.com/' . 'Hospital ' . $c,
@@ -31,15 +32,17 @@ class ServiciosEsencialesSeeder extends Seeder
             DB::table('servicios_esenciales')->insert([
                 'puntosinteres_id' => $c,
                 'Tipo'             => 'Hospitales',
+                "created_at"       => null,
+                "updated_at"       => null,
             ]);
         }
 
         for ($c = 21; $c < 41; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Farmacia ' . $faker->city,
-                'Departamento' => $faker->state,
-                'Ciudad'       => $faker->city,
-                'Direccion'    => $faker->address,
+                'Nombre'         => 'Farmacia ' . $faker->city,
+                'Departamento'   => $faker->state,
+                'Ciudad'         => $faker->city,
+                'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'Facebook' => 'https://www.facebook.com/' . 'Farmacia ' . $c,
@@ -58,10 +61,10 @@ class ServiciosEsencialesSeeder extends Seeder
 
         for ($c = 41; $c < 61; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Cerrajeria ' . $faker->city,
-                'Departamento' => $faker->state,
-                'Ciudad'       => $faker->city,
-                'Direccion'    => $faker->address,
+                'Nombre'         => 'Cerrajeria ' . $faker->city,
+                'Departamento'   => $faker->state,
+                'Ciudad'         => $faker->city,
+                'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'Facebook' => 'https://www.facebook.com/' . 'Cerrajeria ' . $c,
@@ -80,10 +83,10 @@ class ServiciosEsencialesSeeder extends Seeder
 
         for ($c = 61; $c < 81; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Estacion ' . $faker->city,
-                'Departamento' => $faker->state,
-                'Ciudad'       => $faker->city,
-                'Direccion'    => $faker->address,
+                'Nombre'         => 'Estacion ' . $faker->city,
+                'Departamento'   => $faker->state,
+                'Ciudad'         => $faker->city,
+                'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'Facebook' => 'https://www.facebook.com/' . 'Estacion ' . $c,
@@ -102,10 +105,10 @@ class ServiciosEsencialesSeeder extends Seeder
 
         for ($c = 81; $c < 101; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Seccional ' . $faker->city,
-                'Departamento' => $faker->state,
-                'Ciudad'       => $faker->city,
-                'Direccion'    => $faker->address,
+                'Nombre'         => 'Seccional ' . $faker->city,
+                'Departamento'   => $faker->state,
+                'Ciudad'         => $faker->city,
+                'Direccion'      => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'Facebook' => 'https://www.facebook.com/' . 'Seccional ' . $c,

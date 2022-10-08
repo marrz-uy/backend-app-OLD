@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Telefonos extends Model
 {
     use HasFactory;
+    
     public function PuntosInteresTelefonos(){
         return $this->belongsTo(PuntosInteres::class, "puntosinteres_id", "id");
     }

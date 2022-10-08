@@ -399,5 +399,23 @@ class TranslationSeeder extends Seeder
             'es'      => 'Ver menos Categorias',
             'en'      => 'See less categories',
         ]);
+
+        DB::table('translations')->insert([
+            'tagName' => 'noResults',
+            'es'      => 'Sin resultados esta busqueda',
+            'en'      => 'No results for this search',
+        ]);
+
+        DB::table('translations')->insert([
+            'tagName' => 'resultsFor',
+            'es'      => 'resultados para',
+            'en'      => 'results for',
+        ]);
+
+        DB::table('translations')->insert([
+            'tagName' => 'serachBtn',
+            'es'      => 'Buscar',
+            'en'      => 'Search',
+        ]);
     }
 }

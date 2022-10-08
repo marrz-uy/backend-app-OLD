@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEspectaculosTable extends Migration
+class CreateArtistasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateEspectaculosTable extends Migration
      */
     public function up()
     {
-        Schema::create('espectaculos', function (Blueprint $table) {
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_general_ci';
+        Schema::create('artistas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('puntosinteres_id')
-            ->constrained('puntosinteres')
+            $table->foreignId('eventos_id')
+            ->constrained('eventos')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->set('Tipo',['Cine','Teatro','Carnaval','EventoDeportivo']);
+            $table->String('NombreArtistico');
+            $table->String('Genero')->nullable();
+            $table->String('Descripcion')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -34,6 +33,6 @@ class CreateEspectaculosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('espectaculos');
+        Schema::dropIfExists('artistas');
     }
 }
