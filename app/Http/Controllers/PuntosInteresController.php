@@ -44,21 +44,20 @@ class PuntosInteresController extends Controller
         $longMAX = $longpunto + ($distancia);
 
         // WERE-WEREBETWEEN FUNCIONANDO BIEN
-        
-        $eventosPorNombre = DB::table('eventos')
-        ->Join('puntosinteres', 'puntosinteres.id', '=', 'puntosinteres_id')
-        ->where('eventos.NombreEvento', 'like', '%' . $Nombre . '%')
-        ->orWhere('eventos.tipo', 'like', '%' . $Nombre . '%')
-        ->paginate(12);
-        
-        
-        
+
+        $eventosPorNombre = DB::table('puntosinteres')
+            ->Join('eventos', 'puntosinteres_id', '=', 'puntosinteres.id')
+            ->whereBetween('Latitud', [$latMIN, $latMAX])
+            ->whereBetween('Longitud', [$longMIN, $longMAX])
+            ->where('eventos.NombreEvento', 'like', '%' . $Nombre . '%')
+            // ->orWhere('eventos.tipo', 'like', '%' . $Nombre . '%')
+            ->paginate(12);
+
         $puntosPorNombre = DB::table('puntosinteres')
             ->where('nombre', 'like', '%' . $Nombre . '%')
             ->whereBetween('Latitud', [$latMIN, $latMAX])
             ->whereBetween('Longitud', [$longMIN, $longMAX])
             ->paginate(12);
-            
 
         if ($puntosPorNombre == '') {
             return response()->json($eventosPorNombre);
@@ -97,8 +96,8 @@ class PuntosInteresController extends Controller
         if ($Categoria === 'Espectaculos') {
             $tabla = 'espectaculos';
         }
-        
-         if ($Categoria === 'Transporte') {
+
+        if ($Categoria === 'Transporte') {
             $tabla = 'transporte';
         }
 
@@ -112,7 +111,6 @@ class PuntosInteresController extends Controller
         // LONGITUD
         $longMIN = $longpunto - ($distancia);
         $longMAX = $longpunto + ($distancia);
-        
 
         $puntosPorCategoria = DB::table('puntosinteres')
             ->Join($tabla, 'puntosinteres.id', '=', 'puntosinteres_id')
@@ -120,7 +118,7 @@ class PuntosInteresController extends Controller
             ->whereBetween('Longitud', [$longMIN, $longMAX])
             ->orderBy('Tipo')
             ->paginate(12);
-            
+
         return response()->json($puntosPorCategoria);
 
     }
