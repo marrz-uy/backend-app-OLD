@@ -17,7 +17,7 @@ class UserProfileSeeder extends Seeder
         DB::table('userprofile')->insert([
             'user_id' => 1,
             'nacionalidad' => 'Uruguayo',
-            'f_nacimiento' => '2020-08-25',
+            'f_nacimiento' => '1980-12-26',
             'preferencias' => '[{"id":"01","categoria":"Alojamiento","category":"Lodgin","value":"hotel","label":"Hotel","labelEng":"Hotel","labelEsp":"Hotel"},{"id":"21","categoria":"Espectaculos","category":"Shows","value":"cine","label":"Cine","labelEng":"Cinema","labelEsp":"Cine"}]',
         ]); 
 

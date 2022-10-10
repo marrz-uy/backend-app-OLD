@@ -17,6 +17,7 @@ class UserProfile extends Model
         'preferencias',
     ];
 
+
     // Realacion uno a uno
     public function user()
     {
