@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             ServiciosEsencialesSeeder::class,
             EspectaculosSeeder::class,
             EventosSeeder::class,
-            TransporteSeeder::class
+            TransporteSeeder::class,
+            ActividadesInfantilesSeeder::class
         ]);
     }
 }
