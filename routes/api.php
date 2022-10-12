@@ -21,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('redirect/{driver}', [AuthController::class, 'redirectToProvider'])
+    ->name('login.provider')
+    ->where('driver', implode('|', config('auth.socialite.drivers')));
+
+Route::get('{driver}/callback', [AuthController::class, 'handleProviderCallback'])
+    ->name('login.callback')
+    ->where('driver', implode('|', config('auth.socialite.drivers')));
+
 Route::POST('login', [AuthController::class, 'login']);
 Route::POST('register', [AuthController::class, 'register']);
 Route::POST('logout', [AuthController::class, 'logout']);
@@ -29,7 +37,6 @@ Route::PATCH('updateEmail/{id}', [AuthController::class, 'userEmailUpdate']);
 Route::PATCH('updateName/{id}', [AuthController::class, 'userNameUpdate']);
 Route::PATCH('updatePassword/{id}', [AuthController::class, 'userPasswordUpdate']);
 Route::POST('deleteUsers', [AuthController::class, 'deleteUsersAfterTesting']);
-
 
 Route::GET('/userProfile/{id}', [UserProfileController::class, 'showUserProfile']);
 Route::POST('/userProfile', [UserProfileController::class, 'insertUserProfile']);
@@ -43,4 +50,3 @@ Route::POST('/PuntosInteresCercanos/categoria/{categoria}', [PuntosInteresContro
 
 Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);
-
