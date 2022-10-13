@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use Validator;
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Exception;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Validator;
 
 // use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +18,7 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login', 'register', 'deleteUsersAfterTesting']]);
     }
+
     //Login Google
     public function redirectToProvider($driver)
     {
@@ -28,7 +29,7 @@ class AuthController extends Controller
     {
         try {
             $user = Socialite::driver($driver)->user();
-        } catch (Exception$e) {
+        } catch (Exception $e) {
             return redirect()->route('login');
         }
 
