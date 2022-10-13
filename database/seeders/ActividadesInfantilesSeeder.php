@@ -29,7 +29,7 @@ class ActividadesInfantilesSeeder extends Seeder
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_intanfiles')->insert([
+            DB::table('actividades_infantiles')->insert([
                 'puntosinteres_id' => $c,
                 'Tipo'             => 'Teatro',
             ]);
@@ -51,7 +51,7 @@ class ActividadesInfantilesSeeder extends Seeder
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_intanfiles')->insert([
+            DB::table('actividades_infantiles')->insert([
                 'puntosinteres_id' => $c,
                 'Tipo'             => 'Parque',
             ]);
@@ -72,7 +72,7 @@ class ActividadesInfantilesSeeder extends Seeder
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_intanfiles')->insert([
+            DB::table('actividades_infantiles')->insert([
                 'puntosinteres_id' => $c,
                 'Tipo'             => 'Paseo',
             ]);
@@ -93,7 +93,7 @@ class ActividadesInfantilesSeeder extends Seeder
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_intanfiles')->insert([
+            DB::table('actividades_infantiles')->insert([
                 'puntosinteres_id' => $c,
                 'Tipo'             => 'Techado',
             ]);

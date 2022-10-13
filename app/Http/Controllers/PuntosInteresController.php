@@ -61,8 +61,8 @@ class PuntosInteresController extends Controller
         if ($Categoria === 'Transporte') {
             $tabla = 'transporte';
         }
-        if ($Categoria === 'Act.Infantiles') {
-            $tabla = 'actividadesInfantiles';
+        if ($Categoria === 'Actividades Infantiles') {
+            $tabla = 'actividades_infantiles';
         }
 
         // VALORES RECIBIDOS
