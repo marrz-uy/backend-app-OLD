@@ -1,12 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\PuntosInteres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PuntosInteresController extends Controller
 {
+
+
+    public function EndpointNacho(Request $request, $id)
+    {
+        $puntos = PuntosInteres::find($id);
+
+
+            return response()->json($puntos);
+
+    }
+
 
     //**LISTAR PUNTOS DE INTERES POR NOMBRE con DISTANCIA**
     public function ListarPuntosDeInteresPorNombreCercanos(Request $request, $Nombre)

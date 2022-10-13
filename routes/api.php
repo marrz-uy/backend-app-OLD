@@ -36,7 +36,6 @@ Route::POST('/userProfile', [UserProfileController::class, 'insertUserProfile'])
 Route::PATCH('/userProfile/{id}', [UserProfileController::class, 'updateUserProfile']);
 Route::DELETE('/userProfile/{id}', [UserProfileController::class, 'deleteUserProfile']);
 
-// Route::GET('/PuntosInteres/nombre/{nombre}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombre']);
 Route::POST('/PuntosInteresCercanos/nombre/{nombre}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorNombreCercanos']); //Con geolocalizacion
 // Route::GET('/PuntosInteres/categoria/{categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorCategoria']);
 Route::POST('/PuntosInteresCercanos/categoria/{categoria}', [PuntosInteresController::class, 'ListarPuntosDeInteresPorCategoriaCercanos']); //Con geolocalizacion
@@ -44,3 +43,4 @@ Route::POST('/PuntosInteresCercanos/categoria/{categoria}', [PuntosInteresContro
 Route::GET('/translations', [TranslationsController::class, 'fetchTranslations']);
 Route::POST('/translations', [TranslationsController::class, 'saveTranslations']);
 
+Route::GET('/PuntosInteres/{id}', [PuntosInteresController::class, 'EndpointNacho']);
