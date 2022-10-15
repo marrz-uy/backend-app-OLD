@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             EspectaculosSeeder::class,
             EventosSeeder::class,
             TransporteSeeder::class,
-            ActividadesInfantilesSeeder::class
+            ActividadesInfantilesSeeder::class,
+            ActividadesNocturnasSeeder::class
         ]);
     }
 }

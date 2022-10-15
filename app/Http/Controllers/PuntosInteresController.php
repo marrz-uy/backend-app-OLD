@@ -64,6 +64,9 @@ class PuntosInteresController extends Controller
         if ($Categoria === 'Actividades Infantiles') {
             $tabla = 'actividades_infantiles';
         }
+        if ($Categoria === 'Actividades Nocturnas') {
+            $tabla = 'actividades_nocturnas';
+        }
 
         // VALORES RECIBIDOS
         $latpunto  = $request->latitudAEnviar;

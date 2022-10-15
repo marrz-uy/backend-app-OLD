@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActividadesInfantilesTable extends Migration
+class CreateActividadesNocturnasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateActividadesInfantilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('actividades_infantiles', function (Blueprint $table) {
+        Schema::create('actividades_nocturnas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('puntosinteres_id')
                 ->constrained('puntosinteres')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->set('Tipo', ['Circo','Calesita','Maquinitas','Juegos Infantiles']);
+            $table->set('Tipo', ['Discoteca','Casino','Pool','Cantina','Bowling']);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateActividadesInfantilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividades_infantiles');
+        Schema::dropIfExists('actividades_nocturnas');
     }
 }
