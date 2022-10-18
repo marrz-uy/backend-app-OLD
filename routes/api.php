@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('redirect/{driver}', [AuthController::class, 'redirectToProvider'])
-    ->name('login.provider')
-    ->where('driver', implode('|', config('auth.socialite.drivers')));
+// Route::get('auth/social', 'LoginController@show')->name('social.login');
+// Route::get('oauth/{driver}', 'LoginController@redirectToProvider')->name('social.oauth');
+// Route::get('oauth/{driver}/callback', 'LoginController@handleProviderCallback')->name('social.callback');
 
-Route::get('{driver}/callback', [AuthController::class, 'handleProviderCallback'])
-    ->name('login.callback')
-    ->where('driver', implode('|', config('auth.socialite.drivers')));
+// Route::get('auth/social', [AuthController::class, 'login'])->name('social.login');
+Route::GET('/login/{provider}',[AuthController::class, 'redirectToProvider']);
+Route::GET('/login/{provider}/callback', [AuthController::class, 'handleProviderCallback']);
 
 Route::POST('login', [AuthController::class, 'login']);
 Route::POST('register', [AuthController::class, 'register']);

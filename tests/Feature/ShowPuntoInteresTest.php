@@ -8,13 +8,21 @@ class ShowPuntoInteresTest extends TestCase
 {
     public function test_ObtenerPuntosInteres()
     {
-        $response = $this->get('/api/PuntosInteres/nombre/farmacia');
+        $response = $this->post('/api/PuntosInteresCercanos/nombre/farmacia', [
+            'latitudAEnviar'   => 3481272,
+            'longitudAEnviar'  => 5592842,
+            'distanciaAEnviar' => 50000,
+        ]);
         $response->assertStatus(200);
     }
 
     public function test_Paginacion()
     {
-        $response = $this->get('/api/PuntosInteres/categoria/Espectaculos');
+        $response = $this->post('/api/PuntosInteresCercanos/categoria/Espectaculos', [
+            'latitudAEnviar'   => 3481272,
+            'longitudAEnviar'  => 5592842,
+            'distanciaAEnviar' => 50000,
+        ]);
         $response->assertJsonCount(12, "data");
         $response->assertJsonStructure(["next_page_url"]);
         $response->assertJsonStructure(["last_page_url"]);

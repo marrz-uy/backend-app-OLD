@@ -9,11 +9,10 @@ class RegisterTest extends TestCase
 
     public function test_Registrar_usuario___Operacion_Exitosa()
     {
-
-        $email                = getenv('API_USER_EMAIL2');
-        $password             = getenv('API_USER_PASSWORD2');
-        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION2');
-        $name                 = getenv('API_USER_NAME2');
+        $email                = getenv('API_USER_EMAIL1');
+        $password             = getenv('API_USER_PASSWORD1');
+        $passwordConfirmation = getenv('API_USER_PASSWORDCONFIRMATION1');
+        $name                 = getenv('API_USER_NAME1');
 
         $response = $this->withHeaders([
             'content-type' => 'application/json',
@@ -25,14 +24,12 @@ class RegisterTest extends TestCase
         ]);
 
         $response->assertStatus(201);
-
     }
 
     public function test_Registrar_usuario___Confirmar_creacion___usuario_se_loguea()
     {
-
-        $email    = getenv('API_USER_EMAIL2');
-        $password = getenv('API_USER_PASSWORD2');
+        $email    = getenv('API_USER_EMAIL1');
+        $password = getenv('API_USER_PASSWORD1');
 
         $response = $this->withHeaders([
             'Content-type' => 'application/json',

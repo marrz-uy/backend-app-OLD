@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Validator;
@@ -16,41 +15,70 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'deleteUsersAfterTesting']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'deleteUsersAfterTesting', 'redirectToProvider', 'handleProviderCallback']]);
     }
 
-    //Login Google
-    public function redirectToProvider($driver)
+    protected $providers = [
+        'google', 'facebook', 'twitter',
+    ];
+
+    //! Login Google
+    /**
+     * Redirect the user to the Provider authentication page.
+     *
+     * @param $provider
+     * @return JsonResponse
+     */
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver($driver)->redirect();
+        return Socialite::driver($provider)->stateless()->redirect();
     }
 
-    public function handleProviderCallback($driver)
+    /**
+     * Obtain the user information from Provider.
+     *
+     * @param $provider
+     * @return JsonResponse
+     */
+    public function handleProviderCallback(Request $request, $provider)
     {
         try {
-            $user = Socialite::driver($driver)->user();
-        } catch (Exception $e) {
-            return redirect()->route('login');
+            $user = Socialite::driver($provider)->stateless()->user();
+        } catch (ClientException $exception) {
+            return response()->json(['error' => 'erorrrrr']);
         }
 
-        $existingUser = User::where('email', $user->getEmail())->first();
+        $userExists = User::where('email', $user->getEmail())->first();
+        $exists     = false;
 
-        if ($existingUser) {
-            auth()->login($existingUser, true);
-        } else {
-            $newUser                    = new User;
-            $newUser->provider_name     = $driver;
-            $newUser->provider_id       = $user->getId();
-            $newUser->name              = $user->getName();
-            $newUser->email             = $user->getEmail();
-            $newUser->email_verified_at = now();
-            $newUser->avatar            = $user->getAvatar();
-            $newUser->save();
-
-            auth()->login($newUser, true);
+        if ($userExists) {
+            $exists = true;
+            return response()->json(
+                [
+                    'existe' => $exists,
+                    'email'  => $user->getEmail(),
+                ], 200);
         }
 
-        return $this->respondWithToken($token);
+        if (!$userExists) {
+            // create a new user
+            $newUser = User::create([
+                'name'         => $user->getName(),
+                'email'        => $user->getEmail(),
+                'avatar'       => $user->getAvatar(),
+                'provider'     => $provider,
+                'provider_id'  => $user->getId(),
+                'access_token' => $user->token,
+                // user can use reset password to create a password
+                'password'     => '',
+            ]);
+
+            return response()->json(
+                [
+                    'existe' => 'NuevoUsuario',
+                    'email'  => $user->getEmail(),
+                ], 201);
+        }
     }
 
     public function login(Request $request)
