@@ -6,98 +6,118 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory;
 
-class ActividadesInfantilesSeeder extends Seeder
+class ActividadesNocturnasSeeder extends Seeder
 {
 
     public function run()
     {
         $faker = Factory::create();
 
-        for ($c = 221; $c < 241; $c++) {
+        for ($c = 301; $c < 321; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Circo ' . $faker->city,
+                'Nombre'       => 'Discoteca ' . $faker->city,
                 'Departamento' => $faker->state,
                 'Ciudad'       => $faker->city,
                 'Direccion'    => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook' => 'https://www.facebook.com/' . 'Circo ' . $c,
-                'Instagram' => 'https://www.instagram.com/' . 'Circo ' . $c,
+                'Facebook' => 'https://www.facebook.com/' . 'Discoteca ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Discoteca ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_infantiles')->insert([
+            DB::table('actividades_nocturnas')->insert([
                 'puntosinteres_id' => $c,
-                'Tipo'             => 'Circo',
+                'Tipo'             => 'Discoteca',
             ]);
         }
 
-        for ($c = 241; $c < 261; $c++) {
+        for ($c = 321; $c < 341; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Calesita ' . $faker->city,
+                'Nombre'       => 'Casino ' . $faker->city,
                 'Departamento' => $faker->state,
                 'Ciudad'       => $faker->city,
                 'Direccion'    => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook' => 'https://www.facebook.com/' . 'Calesita ' . $c,
-                'Instagram' => 'https://www.instagram.com/' . 'Calesita' . $c,
+                'Facebook' => 'https://www.facebook.com/' . 'Casino ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Casino ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_infantiles')->insert([
+            DB::table('actividades_nocturnas')->insert([
                 'puntosinteres_id' => $c,
-                'Tipo'             => 'Calesita',
+                'Tipo'             => 'Casino',
             ]);
         }
-        for ($c = 261; $c < 281; $c++) {
+        for ($c = 341; $c < 361; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Maquinitas ' . $faker->city,
+                'Nombre'       => 'Pool ' . $faker->city,
                 'Departamento' => $faker->state,
                 'Ciudad'       => $faker->city,
                 'Direccion'    => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook' => 'https://www.facebook.com/' . 'Maquinitas ' . $c,
-                'Instagram' => 'https://www.instagram.com/' . 'Maquinitas ' . $c,
+                'Facebook' => 'https://www.facebook.com/' . 'Pool ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Pool ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_infantiles')->insert([
+            DB::table('actividades_nocturnas')->insert([
                 'puntosinteres_id' => $c,
-                'Tipo'             => 'Maquinitas',
+                'Tipo'             => 'Pool',
             ]);
         }
-        for ($c = 281; $c < 301; $c++) {
+        for ($c = 361; $c < 381; $c++) {
             DB::table('puntosinteres')->insert([
-                'Nombre'       => 'Juegos Infantiles ' . $faker->city,
+                'Nombre'       => 'Cantina ' . $faker->city,
                 'Departamento' => $faker->state,
                 'Ciudad'       => $faker->city,
                 'Direccion'    => $faker->address,
                 'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
                 'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
-                'Facebook' => 'https://www.facebook.com/' . 'Juegos Infantiles ' . $c,
-                'Instagram' => 'https://www.instagram.com/' . 'Juegos Infantiles ' . $c,
+                'Facebook' => 'https://www.facebook.com/' . 'Cantina ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Cantina ' . $c,
                 'Descripcion'  => $faker->text($maxNbChars = 200),
                 'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
                 'Latitud'        => rand(3474990, 3493590),
                 'Longitud'       => rand(5583360, 5633330)
             ]);
 
-            DB::table('actividades_infantiles')->insert([
+            DB::table('actividades_nocturnas')->insert([
                 'puntosinteres_id' => $c,
-                'Tipo'             => 'Juegos Infantiles',
+                'Tipo'             => 'Cantina',
             ]);
         }
-        
+        for ($c = 381; $c < 401; $c++) {
+            DB::table('puntosinteres')->insert([
+                'Nombre'       => 'Bowling ' . $faker->city,
+                'Departamento' => $faker->state,
+                'Ciudad'       => $faker->city,
+                'Direccion'    => $faker->address,
+                'HoraDeApertura' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'HoraDeCierre' => $faker->time($format = 'H:i:s', $max = 'now'),
+                'Facebook' => 'https://www.facebook.com/' . 'Bowling ' . $c,
+                'Instagram' => 'https://www.instagram.com/' . 'Bowling ' . $c,
+                'Descripcion'  => $faker->text($maxNbChars = 200),
+                'Imagen'       => $faker->imageUrl($width = 640, $height = 480),
+                'Latitud'        => rand(3474990, 3493590),
+                'Longitud'       => rand(5583360, 5633330)
+            ]);
+
+            DB::table('actividades_nocturnas')->insert([
+                'puntosinteres_id' => $c,
+                'Tipo'             => 'Bowling',
+            ]);
+        }
     }
 }
